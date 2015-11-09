@@ -1,0 +1,27 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_paquete_new' %}
+
+{% block main %}
+    <h1>Nuevo paquete</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.titulo) }}
+        {{ form_row(form.descripcion) }}
+        {{ form_row(form.publishedAt) }}
+
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+
+        {{ form_widget(form.saveAndCreateNew, { label: 'Guardar y crear otro', attr: { class: 'btn btn-primary' } }) }}
+
+        <a href="{{ path('admin_paquete_index') }}" class="btn btn-link">
+            Volver al listado de paquetes
+        </a>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

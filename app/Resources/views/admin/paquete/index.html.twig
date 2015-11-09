@@ -1,0 +1,52 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_paquete_index' %}
+
+{% block main %}
+    <h1>Listado de paquetes</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th><i class="fa fa-calendar"></i> Fecha de creación</th>
+                <th><i class="fa fa-cogs"></i> Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paquete in paquetes %}
+            <tr>
+                <td>{{ paquete.titulo }}</td>
+                <td>{% if paquete.publishedAt %}{{ paquete.publishedAt|localizeddate('short', 'short') }}{% endif %}</td>
+                <td>
+                    <div class="item-actions">
+                        <a href="{{ path('admin_paquete_show', { id: paquete.id }) }}" class="btn btn-sm btn-default">
+                            {{ 'action.show'|trans }}
+                        </a>
+
+                        <a href="{{ path('admin_paquete_edit', { id: paquete.id }) }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-edit"></i> {{ 'action.edit'|trans }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" align="center">No se han encontrado paquetes.</td>
+           </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section actions">
+        <a href="{{ path('admin_paquete_new') }}" class="btn btn-lg btn-block btn-success">
+            <i class="fa fa-plus"></i> Nuevo
+        </a>
+    </div>
+
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

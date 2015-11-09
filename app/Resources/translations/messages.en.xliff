@@ -171,7 +171,7 @@
             </trans-unit>
             <trans-unit id="label.published_at">
                 <source>label.published_at</source>
-                <target>Published at</target>
+                <target>Fecha de creación</target>
             </trans-unit>
             <trans-unit id="label.actions">
                 <source>label.actions</source>
@@ -184,6 +184,15 @@
             <trans-unit id="action.edit_contents">
                 <source>action.edit_contents</source>
                 <target>Edit contents</target>
+            </trans-unit>
+
+            <trans-unit id="label.titulo">
+                <source>label.titulo</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="label.descripcion">
+                <source>label.descripcion</source>
+                <target>Descripción</target>
             </trans-unit>
 
             <trans-unit id="menu.post_list">
