@@ -63,6 +63,14 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $annaAdmin->setPassword($encodedPassword);
         $manager->persist($annaAdmin);
 
+        $avantripAdmin = new User();
+        $avantripAdmin->setUsername('admin');
+        $avantripAdmin->setEmail('info@avantrip.com');
+        $avantripAdmin->setRoles(array('ROLE_ADMIN'));
+        $encodedPassword = $passwordEncoder->encodePassword($avantripAdmin, 'adminavantrip');
+        $avantripAdmin->setPassword($encodedPassword);
+        $manager->persist($avantripAdmin);
+
         $manager->flush();
     }
 
