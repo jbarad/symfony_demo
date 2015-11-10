@@ -199,6 +199,10 @@
                 <source>menu.post_list</source>
                 <target>Post list</target>
             </trans-unit>
+            <trans-unit id="menu.paquete_list">
+                <source>menu.paquete_list</source>
+                <target>Listado de paquetes</target>
+            </trans-unit>
             <trans-unit id="menu.back_to_blog">
                 <source>menu.back_to_blog</source>
                 <target>Back to blog</target>

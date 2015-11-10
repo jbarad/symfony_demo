@@ -6,16 +6,19 @@
     {{ form_start(form, { attr: { novalidate: 'novalidate' } }) }}
 #}
 
-{{ form_start(form, { attr: attr|default({}) }) }}
-    {{ form_row(form.titulo) }}
-    {{ form_row(form.descripcion) }}
-    {{ form_row(form.publishedAt) }}
+{% if show_confirmation|default(false) %}
+    {% set attr = {'data-confirmation': 'true'} %}
+    {{ include('paquete/_delete_paquete_confirmation.html.twig') }}
+{% endif %}
 
-    <input type="submit" value="{{ button_label|default('label.create_paquete'|trans) }}"
+{{ form_start(form, { attr: attr|default({}) }) }}
+    {{ form_widget(form) }}
+
+    <input type="submit" value="{{ button_label|default('label.create_post'|trans) }}"
            class="{{ button_css|default("btn btn-primary") }}" />
 
     {% if include_back_to_home_link|default(false) %}
-        <a href="{{ path('admin_paquete_index') }}" class="btn btn-link">
+        <a href="{{ path('admin_post_index') }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     {% endif %}

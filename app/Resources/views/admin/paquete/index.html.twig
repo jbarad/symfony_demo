@@ -3,14 +3,14 @@
 {% block body_id 'admin_paquete_index' %}
 
 {% block main %}
-    <h1>Listado de paquetes</h1>
+    <h1>{{ 'title.paquete_list'|trans }}</h1>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Título</th>
-                <th><i class="fa fa-calendar"></i> Fecha de creación</th>
-                <th><i class="fa fa-cogs"></i> Acciones</th>
+                <th>{{ 'paquete.label.titulo'|trans }}</th>
+                <th><i class="fa fa-calendar"></i> {{ 'label.published_at'|trans }}</th>
+                <th><i class="fa fa-cogs"></i> {{ 'label.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3" align="center">No se han encontrado paquetes.</td>
+                <td colspan="3" align="center">{{ 'paquete.no_paquetes_found'|trans }}</td>
            </tr>
         {% endfor %}
         </tbody>
@@ -42,7 +42,7 @@
 {% block sidebar %}
     <div class="section actions">
         <a href="{{ path('admin_paquete_new') }}" class="btn btn-lg btn-block btn-success">
-            <i class="fa fa-plus"></i> Nuevo
+            <i class="fa fa-plus"></i> {{ 'action.create_paquete'|trans }}
         </a>
     </div>
 

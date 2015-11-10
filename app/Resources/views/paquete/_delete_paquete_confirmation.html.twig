@@ -3,15 +3,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <h4>¿Estás seguro que deseas eliminar este paquete?</h4>
-                <p>Esta acción no puede ser revertida.</p>
+                <h4>{{ 'delete_paquete_modal.title'|trans }}</h4>
+                <p>{{ 'delete_paquete_modal.body'|trans }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="btnNo" data-dismiss="modal">
-                    Cancelar
+                    {{ 'label.cancel'|trans }}
                 </button>
                 <button type="button" class="btn btn-danger" id="btnYes" data-dismiss="modal">
-                    Eliminar paquete
+                    {{ 'label.delete_paquete'|trans }}
                 </button>
             </div>
         </div>

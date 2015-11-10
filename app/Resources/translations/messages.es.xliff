@@ -55,9 +55,17 @@
                 <source>title.post_list</source>
                 <target>Listado de artículos</target>
             </trans-unit>
+            <trans-unit id="title.paquete_list">
+                <source>title.paquete_list</source>
+                <target>Listado de paquetes</target>
+            </trans-unit>
             <trans-unit id="title.edit_post">
                 <source>title.edit_post</source>
                 <target>Editar artículo #%id%</target>
+            </trans-unit>
+            <trans-unit id="title.edit_paquete">
+                <source>title.edit_paquete</source>
+                <target>Editar paquete #%id%</target>
             </trans-unit>
             <trans-unit id="title.add_comment">
                 <source>title.add_comment</source>
@@ -92,17 +100,33 @@
                 <source>action.delete_post</source>
                 <target>Borrar artículo</target>
             </trans-unit>
+            <trans-unit id="action.delete_paquete">
+                <source>action.delete_paquete</source>
+                <target>Borrar paquete</target>
+            </trans-unit>
             <trans-unit id="delete_post_modal.title">
                 <source>delete_post_modal.title</source>
                 <target>¿Está seguro que quiere eliminar este artículo?</target>
+            </trans-unit>
+            <trans-unit id="delete_paquete_modal.title">
+                <source>delete_paquete_modal.title</source>
+                <target>¿Está seguro que quiere eliminar este paquete?</target>
             </trans-unit>
             <trans-unit id="delete_post_modal.body">
                 <source>delete_post_modal.body</source>
                 <target>Esta acción no se puede deshacer.</target>
             </trans-unit>
+            <trans-unit id="delete_paquete_modal.body">
+                <source>delete_paquete_modal.body</source>
+                <target>Esta acción no se puede deshacer.</target>
+            </trans-unit>
             <trans-unit id="label.delete_post">
                 <source>label.delete_post</source>
                 <target>Borrar artículo</target>
+            </trans-unit>
+            <trans-unit id="label.delete_paquete">
+                <source>label.delete_paquete</source>
+                <target>Borrar paquete</target>
             </trans-unit>
             <trans-unit id="label.cancel">
                 <source>label.cancel</source>
@@ -112,13 +136,25 @@
                 <source>action.create_post</source>
                 <target>Crear un nuevo artículo</target>
             </trans-unit>
+            <trans-unit id="action.create_paquete">
+                <source>action.create_paquete</source>
+                <target>Crear un nuevo paquete</target>
+            </trans-unit>
             <trans-unit id="label.create_post">
                 <source>label.create_post</source>
                 <target>Crear artículo</target>
             </trans-unit>
+            <trans-unit id="label.create_paquete">
+                <source>label.create_paquete</source>
+                <target>Guardar</target>
+            </trans-unit>
+            <trans-unit id="label.save_and_create_new">
+                <source>label.save_and_create_new</source>
+                <target>Guardar y crear otro</target>
+            </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
-                <target>Volver al listado de artículos</target>
+                <target>Volver al listado</target>
             </trans-unit>
             <trans-unit id="action.publish_comment">
                 <source>action.publish_comment</source>
@@ -177,18 +213,40 @@
                 <source>label.actions</source>
                 <target>Acciones</target>
             </trans-unit>
+
+            <trans-unit id="paquete.label.titulo">
+                <source>paquete.label.titulo</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.descripcion">
+                <source>paquete.label.descripcion</source>
+                <target>Descripción</target>
+            </trans-unit>
+
             <trans-unit id="title.post_new">
                 <source>title.post_new</source>
                 <target>Nuevo artículo</target>
+            </trans-unit>
+            <trans-unit id="title.paquete_new">
+                <source>title.paquete_new</source>
+                <target>Nuevo paquete</target>
             </trans-unit>
             <trans-unit id="action.edit_contents">
                 <source>action.edit_contents</source>
                 <target>Editar contenidos</target>
             </trans-unit>
+            <trans-unit id="action.edit_paquete">
+                <source>action.edit_paquete</source>
+                <target>Editar paquete</target>
+            </trans-unit>
 
             <trans-unit id="menu.post_list">
                 <source>menu.post_list</source>
                 <target>Listado de artículos</target>
+            </trans-unit>
+            <trans-unit id="menu.paquete_list">
+                <source>menu.paquete_list</source>
+                <target>Listado de paquetes</target>
             </trans-unit>
             <trans-unit id="menu.back_to_blog">
                 <source>menu.back_to_blog</source>
@@ -226,6 +284,22 @@
             <trans-unit id="post.no_posts_found">
                 <source>post.no_posts_found</source>
                 <target>No se ha encontrado ningún artículo.</target>
+            </trans-unit>
+            <trans-unit id="paquete.no_paquetes_found">
+                <source>paquete.no_paquetes_found</source>
+                <target>No se ha encontrado ningún paquete.</target>
+            </trans-unit>
+            <trans-unit id="paquete.created_successfully">
+                <source>paquete.created_successfully</source>
+                <target>El paquete ha sido creado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="paquete.updated_successfully">
+                <source>paquete.updated_successfully</source>
+                <target>El paquete ha sido actualizado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="paquete.deleted_successfully">
+                <source>paquete.deleted_successfully</source>
+                <target>El paquete ha sido borrado satisfactoriamente!</target>
             </trans-unit>
 
             <trans-unit id="help.app_description">

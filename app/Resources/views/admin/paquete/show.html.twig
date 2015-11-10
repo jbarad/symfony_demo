@@ -8,13 +8,19 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Descripción</th>
+                <th>{{ 'paquete.label.descripcion'|trans }}</th>
                 <td>{{ paquete.descripcion|md2html }}</td>
             </tr>
             <tr>
-                <th>Fecha de creación</th>
+                <th>{{ 'label.published_at'|trans }}</th>
                 <td><p>{{ paquete.publishedAt|localizeddate('long', 'medium') }}</p></td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="{{ path('admin_paquete_index') }}" class="btn btn-link">
+                        {{ 'action.back_to_list'|trans }}
+                    </a>
+                </td>
         </tbody>
     </table>
 {% endblock %}
@@ -22,14 +28,14 @@
 {% block sidebar %}
     <div class="section">
         <a href="{{ path('admin_paquete_edit', { id: paquete.id }) }}" class="btn btn-lg btn-block btn-success">
-            <i class="fa fa-edit"></i> Editar paquete
+            <i class="fa fa-edit"></i> {{ 'action.edit_paquete'|trans }}
         </a>
     </div>
 
     <div class="section">
-        {{ include('admin/paquete/_form.html.twig', {
+        {{ include('admin/paquete/_form_delete.html.twig', {
             form: delete_form,
-            button_label: 'Eliminar paquete'|trans,
+            button_label: 'action.delete_paquete'|trans,
             button_css: 'btn btn-lg btn-block btn-danger',
             show_confirmation: true,
         }, with_context = false) }}

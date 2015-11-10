@@ -93,7 +93,7 @@ class PaqueteController extends Controller
             // actions. They are deleted automatically from the session as soon
             // as they are accessed.
             // See http://symfony.com/doc/current/book/controller.html#flash-messages
-            $this->addFlash('success', 'El paquete se ha creado satisfactoriamente.');
+            $this->addFlash('success', 'paquete.created_successfully');
 
             if ($form->get('saveAndCreateNew')->isClicked()) {
                 return $this->redirectToRoute('admin_paquete_new');
@@ -143,7 +143,7 @@ class PaqueteController extends Controller
             $paquete->setSlug($this->get('slugger')->slugify($paquete->getTitulo()));
             $entityManager->flush();
 
-            $this->addFlash('success', 'El paquete ha sido actualizado satisfactoriamente.');
+            $this->addFlash('success', 'paquete.updated_successfully');
 
             return $this->redirectToRoute('admin_paquete_edit', array('id' => $paquete->getId()));
         }
@@ -176,7 +176,7 @@ class PaqueteController extends Controller
             $entityManager->remove($paquete);
             $entityManager->flush();
 
-            $this->addFlash('success', 'El paquete se ha eliminado satisfactoriamente.');
+            $this->addFlash('success', 'paquete.deleted_successfully');
         }
 
         return $this->redirectToRoute('admin_paquete_index');

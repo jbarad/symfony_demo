@@ -41,11 +41,11 @@ class PaqueteType extends AbstractType
         $builder
             ->add('titulo', null, array(
                 'attr' => array('autofocus' => true),
-                'label' => 'label.titulo',
+                'label' => 'paquete.label.titulo',
             ))
             ->add('descripcion', 'textarea', array(
                 'attr' => array('rows' => 20),
-                'label' => 'label.descripcion',
+                'label' => 'paquete.label.descripcion',
             ))
             ->add('publishedAt', 'app_datetimepicker', array(
                 'label' => 'label.published_at',
