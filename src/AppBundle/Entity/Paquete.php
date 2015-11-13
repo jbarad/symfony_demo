@@ -81,14 +81,14 @@ class Paquete
     private $legalesTexto;
 
     /**
-     * @ORM\Column(type="date")
-     * @Assert\Date()
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $validoDesde;
 
     /**
-     * @ORM\Column(type="date")
-     * @Assert\Date()
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $validoHasta;
 

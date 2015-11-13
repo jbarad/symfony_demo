@@ -67,6 +67,10 @@
                 <source>title.edit_paquete</source>
                 <target>Editar paquete #%id%</target>
             </trans-unit>
+            <trans-unit id="title.edit_paquete_fechas">
+                <source>title.edit_paquete_fechas</source>
+                <target>Editar paquete #%id% - Fechas y stock</target>
+            </trans-unit>
             <trans-unit id="title.add_comment">
                 <source>title.add_comment</source>
                 <target>Añadir un comentario</target>
@@ -87,6 +91,10 @@
             <trans-unit id="action.edit">
                 <source>action.edit</source>
                 <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="action.fechas">
+                <source>action.fechas</source>
+                <target>Fechas y stock</target>
             </trans-unit>
             <trans-unit id="action.edit_post">
                 <source>action.edit_post</source>

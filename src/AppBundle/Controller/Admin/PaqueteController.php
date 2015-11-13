@@ -157,6 +157,37 @@ class PaqueteController extends Controller
     }
 
     /**
+     * Displays a form to edit an existing Paquete entity.
+     *
+     * @Route("/{id}/fechas", requirements={"id" = "\d+"}, name="admin_paquete_fechas")
+     * @Method({"GET", "POST"})
+     */
+    public function fechasAction(Paquete $paquete, Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $editForm = $this->createForm(new PaqueteType(), $paquete);
+        $deleteForm = $this->createDeleteForm($paquete);
+
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $paquete->setSlug($this->get('slugger')->slugify($paquete->getTitulo()));
+            $entityManager->flush();
+
+            $this->addFlash('success', 'paquete.updated_successfully');
+
+            return $this->redirectToRoute('admin_paquete_edit', array('id' => $paquete->getId()));
+        }
+
+        return $this->render('admin/paquete/fechas.html.twig', array(
+            'paquete'        => $paquete,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
      * Deletes a Paquete entity.
      *
      * @Route("/{id}", name="admin_paquete_delete")

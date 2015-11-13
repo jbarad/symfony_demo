@@ -1,0 +1,9 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_paquete_fechas' %}
+
+{% block main %}
+    <h1>{{ 'title.edit_paquete_fechas'|trans({'%id%': paquete.id}) }}</h1>
+
+    {{ include('default/_flash_messages.html.twig') }}
+{% endblock %}

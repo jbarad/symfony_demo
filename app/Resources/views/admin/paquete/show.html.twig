@@ -53,11 +53,11 @@
             </tr>
             <tr>
                 <th>{{ 'paquete.label.validoDesde'|trans }}</th>
-                <td><p>{{ paquete.validoDesde|localizeddate('long', 'medium') }}</p></td>
+                <td><p>{{ paquete.validoDesde|localizeddate('short', 'short')|date('d-m-Y H:i') }}</td>
             </tr>
             <tr>
                 <th>{{ 'paquete.label.validoHasta'|trans }}</th>
-                <td><p>{{ paquete.validoHasta|localizeddate('long', 'medium') }}</p></td>
+                <td><p>{{ paquete.validoHasta|localizeddate('short', 'short')|date('d-m-Y H:i') }}</p></td>
             </tr>
             <tr>
                 <th>{{ 'paquete.label.pasajeros'|trans }}</th>
