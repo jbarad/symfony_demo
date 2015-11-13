@@ -7,8 +7,24 @@
 
     {{ form_start(form) }}
         {{ form_row(form.titulo) }}
-        {{ form_row(form.descripcion) }}
-        {{ form_row(form.publishedAt) }}
+        {{ form_row(form.descripcionCortaTitulo) }}
+        {{ form_row(form.descripcionCortaTexto) }}
+        {{ form_row(form.descripcionLargaTitulo) }}
+        {{ form_label(form.bullets) }}
+        <div class="bulletContainer">
+            <div class="bullets" data-prototype="{{ form_widget(form.bullets.vars.prototype)|e }}">
+            </div>
+        </div>
+        {% do form.bullets.setRendered %}
+        {{ form_row(form.salidasTitulo) }}
+        {{ form_row(form.salidasTexto) }}
+        {{ form_row(form.legalesTitulo) }}
+        {{ form_row(form.legalesTexto) }}
+        {{ form_row(form.validoDesde) }}
+        {{ form_row(form.validoHasta) }}
+        {{ form_row(form.pasajeros) }}
+        {{ form_row(form.moneda) }}
+        {{ form_row(form.formaVenta) }}
 
         <input type="submit" value="{{ 'label.create_paquete'|trans }}" class="btn btn-primary" />
 
@@ -18,6 +34,9 @@
             {{ 'action.back_to_list'|trans }}
         </a>
     {{ form_end(form) }}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ asset('js/paquete.js') }}"></script>
 {% endblock %}
 
 {% block sidebar %}

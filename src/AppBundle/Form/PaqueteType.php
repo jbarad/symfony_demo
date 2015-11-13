@@ -43,12 +43,60 @@ class PaqueteType extends AbstractType
                 'attr' => array('autofocus' => true),
                 'label' => 'paquete.label.titulo',
             ))
-            ->add('descripcion', 'textarea', array(
-                'attr' => array('rows' => 20),
-                'label' => 'paquete.label.descripcion',
+            ->add('descripcionCortaTitulo', null, array(
+                'label' => 'paquete.label.descripcionCortaTitulo',
             ))
-            ->add('publishedAt', 'app_datetimepicker', array(
-                'label' => 'label.published_at',
+            ->add('descripcionCortaTexto', 'textarea', array(
+                'attr' => array('rows' => 5),
+                'label' => 'paquete.label.descripcionCortaTexto',
+            ))
+            ->add('descripcionLargaTitulo', null, array(
+                'label' => 'paquete.label.descripcionLargaTitulo',
+            ))
+            ->add('bullets', 'collection', array(
+                'label' => 'paquete.label.descripcionLargaBullets',
+                'type' => new BulletType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ))
+            ->add('salidasTitulo', null, array(
+                'label' => 'paquete.label.salidasTitulo',
+            ))
+            ->add('salidasTexto', 'textarea', array(
+                'attr' => array('rows' => 5),
+                'label' => 'paquete.label.salidasTexto',
+            ))
+            ->add('legalesTitulo', null, array(
+                'label' => 'paquete.label.legalesTitulo',
+            ))
+            ->add('legalesTexto', 'textarea', array(
+                'attr' => array('rows' => 5),
+                'label' => 'paquete.label.legalesTexto',
+            ))
+            ->add('validoDesde', 'app_datetimepicker', array(
+                'label' => 'paquete.label.validoDesde',
+            ))
+            ->add('validoHasta', 'app_datetimepicker', array(
+                'label' => 'paquete.label.validoHasta',
+            ))
+            ->add('pasajeros', 'choice', array(
+                'choices' => array_combine(range(1,10),range(1,10)),
+                'multiple' => true,
+                'expanded' => true,
+            ))
+            ->add('moneda', 'choice', array(
+                'choices' => array(
+                    'ARS' => 'Pesos',
+                    'USD' => 'Dólares',
+                ),
+            ))
+            ->add('formaVenta', 'choice', array(
+                'choices' => array(
+                    '0' => 'Vender por beneficio',
+                    '1' => 'Vender por pasajero',
+                ),
+                'expanded' => true,
             ))
         ;
     }

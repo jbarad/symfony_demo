@@ -21,20 +21,6 @@ use Doctrine\ORM\EntityRepository;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class PaqueteRepository extends EntityRepository
+class BulletRepository extends EntityRepository
 {
-    public function queryLatest()
-    {
-        return $this->getEntityManager()
-            ->createQuery('
-                SELECT p
-                FROM AppBundle:Paquete p
-                ORDER BY p.publishedAt DESC
-            ');
-    }
-
-    public function findLatest()
-    {
-        $this->queryLatest()->getResult();
-    }
 }

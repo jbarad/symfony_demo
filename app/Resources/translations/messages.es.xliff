@@ -92,6 +92,18 @@
                 <source>action.edit_post</source>
                 <target>Editar artículo</target>
             </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Eliminar</target>
+            </trans-unit>
+            <trans-unit id="action.enable">
+                <source>action.enable</source>
+                <target>Activar</target>
+            </trans-unit>
+            <trans-unit id="action.disable">
+                <source>action.disable</source>
+                <target>Desactivar</target>
+            </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
                 <target>Guardar cambios</target>
@@ -218,9 +230,61 @@
                 <source>paquete.label.titulo</source>
                 <target>Título</target>
             </trans-unit>
-            <trans-unit id="paquete.label.descripcion">
-                <source>paquete.label.descripcion</source>
-                <target>Descripción</target>
+            <trans-unit id="paquete.label.descripcionLargaTitulo">
+                <source>paquete.label.descripcionLargaTitulo</source>
+                <target>Descripción Larga Título</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.descripcionLargaBullets">
+                <source>paquete.label.descripcionLargaBullets</source>
+                <target>Descripción Larga Bullets</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.descripcionCortaTitulo">
+                <source>paquete.label.descripcionCortaTitulo</source>
+                <target>Descripción Corta Título</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.descripcionCortaTexto">
+                <source>paquete.label.descripcionCortaTexto</source>
+                <target>Descripción Corta Texto</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.salidasTitulo">
+                <source>paquete.label.salidasTitulo</source>
+                <target>Salidas Título</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.salidasTexto">
+                <source>paquete.label.salidasTexto</source>
+                <target>Salidas Texto</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.legalesTitulo">
+                <source>paquete.label.legalesTitulo</source>
+                <target>Legales Título</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.legalesTexto">
+                <source>paquete.label.legalesTexto</source>
+                <target>Legales Texto</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.validoDesde">
+                <source>paquete.label.validoDesde</source>
+                <target>Valido desde</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.validoHasta">
+                <source>paquete.label.validoHasta</source>
+                <target>Valido hasta</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.pasajeros">
+                <source>paquete.label.pasajeros</source>
+                <target>Cantidad de pasajeros</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.moneda">
+                <source>paquete.label.moneda</source>
+                <target>Moneda</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.formaVenta">
+                <source>paquete.label.formaVenta</source>
+                <target>Forma de venta</target>
+            </trans-unit>
+            <trans-unit id="paquete.label.activado">
+                <source>paquete.label.activado</source>
+                <target>Activado</target>
             </trans-unit>
 
             <trans-unit id="title.post_new">
@@ -289,6 +353,10 @@
                 <source>paquete.no_paquetes_found</source>
                 <target>No se ha encontrado ningún paquete.</target>
             </trans-unit>
+            <trans-unit id="paquete.no_bullets_found">
+                <source>paquete.no_bullets_found</source>
+                <target>No se ha encontrado ningún bullet para la descripción larga.</target>
+            </trans-unit>
             <trans-unit id="paquete.created_successfully">
                 <source>paquete.created_successfully</source>
                 <target>El paquete ha sido creado satisfactoriamente!</target>
@@ -300,6 +368,14 @@
             <trans-unit id="paquete.deleted_successfully">
                 <source>paquete.deleted_successfully</source>
                 <target>El paquete ha sido borrado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="paquete.enabled_successfully">
+                <source>paquete.enabled_successfully</source>
+                <target>El paquete ha sido activado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="paquete.disabled_successfully">
+                <source>paquete.disabled_successfully</source>
+                <target>El paquete ha sido desactivado satisfactoriamente!</target>
             </trans-unit>
 
             <trans-unit id="help.app_description">

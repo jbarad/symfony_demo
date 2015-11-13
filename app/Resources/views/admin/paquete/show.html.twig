@@ -8,12 +8,68 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>{{ 'paquete.label.descripcion'|trans }}</th>
-                <td>{{ paquete.descripcion|md2html }}</td>
+                <th>{{ 'paquete.label.descripcionCortaTitulo'|trans }}</th>
+                <td>{{ paquete.descripcionCortaTitulo }}</td>
             </tr>
             <tr>
-                <th>{{ 'label.published_at'|trans }}</th>
-                <td><p>{{ paquete.publishedAt|localizeddate('long', 'medium') }}</p></td>
+                <th>{{ 'paquete.label.descripcionCortaTexto'|trans }}</th>
+                <td>{{ paquete.descripcionCortaTexto|md2html }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.descripcionLargaTitulo'|trans }}</th>
+                <td>{{ paquete.descripcionLargaTitulo }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">{{ 'paquete.label.descripcionLargaBullets'|trans }}</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul>
+                        {% if paquete.bullets.count == 0 %}
+                        <li><font color="red">{{ 'paquete.no_bullets_found'|trans }}</font></li>
+                        {% else %}
+                        {% for bullet in paquete.bullets %}
+                        <li>{{ bullet.texto }}</li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>            
+                </td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.salidasTitulo'|trans }}</th>
+                <td>{{ paquete.salidasTitulo }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.salidasTexto'|trans }}</th>
+                <td>{{ paquete.salidasTexto|md2html }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.legalesTitulo'|trans }}</th>
+                <td>{{ paquete.legalesTitulo }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.legalesTexto'|trans }}</th>
+                <td>{{ paquete.legalesTexto|md2html }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.validoDesde'|trans }}</th>
+                <td><p>{{ paquete.validoDesde|localizeddate('long', 'medium') }}</p></td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.validoHasta'|trans }}</th>
+                <td><p>{{ paquete.validoHasta|localizeddate('long', 'medium') }}</p></td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.pasajeros'|trans }}</th>
+                <td><p>-{{ paquete.pasajeros|join("-") }}</p></td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.moneda'|trans }}</th>
+                <td><p>{{ paquete.getMonedaShow() }}</p></td>
+            </tr>
+            <tr>
+                <th>{{ 'paquete.label.formaVenta'|trans }}</th>
+                <td><p>{{ paquete.getFormaVentaShow() }}</p></td>
             </tr>
             <tr>
                 <td colspan="2">

@@ -84,6 +84,7 @@ class PaqueteController extends Controller
         // See http://symfony.com/doc/current/best_practices/forms.html#handling-form-submits
         if ($form->isSubmitted() && $form->isValid()) {
             $paquete->setSlug($this->get('slugger')->slugify($paquete->getTitulo()));
+            $paquete->setActivado(0);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($paquete);
@@ -178,6 +179,64 @@ class PaqueteController extends Controller
 
             $this->addFlash('success', 'paquete.deleted_successfully');
         }
+
+        return $this->redirectToRoute('admin_paquete_index');
+    }
+
+    /**
+     * Deletes a Paquete entity.
+     *
+     * @Route("/{id}/delete", name="admin_paquete_list_delete")
+     * @Method({"GET", "POST"})
+     *
+     * The Security annotation value is an expression (if it evaluates to false,
+     * the authorization mechanism will prevent the user accessing this resource).
+     * The isAuthor() method is defined in the AppBundle\Entity\Paquete entity.
+     */
+    public function listDeleteAction(Request $request, Paquete $paquete)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->remove($paquete);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'paquete.deleted_successfully');
+
+        return $this->redirectToRoute('admin_paquete_index');
+    }
+
+    /**
+     * Enables an existing Paquete entity.
+     *
+     * @Route("/{id}/enable", requirements={"id" = "\d+"}, name="admin_paquete_enable")
+     * @Method({"GET", "POST"})
+     */
+    public function enableAction(Paquete $paquete, Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $paquete->setActivado(1);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'paquete.enabled_successfully');
+
+        return $this->redirectToRoute('admin_paquete_index');
+    }
+
+    /**
+     * Disables an existing Paquete entity.
+     *
+     * @Route("/{id}/disable", requirements={"id" = "\d+"}, name="admin_paquete_disable")
+     * @Method({"GET", "POST"})
+     */
+    public function disableAction(Paquete $paquete, Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $paquete->setActivado(0);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'paquete.disabled_successfully');
 
         return $this->redirectToRoute('admin_paquete_index');
     }

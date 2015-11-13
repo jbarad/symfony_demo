@@ -36,7 +36,7 @@ class Paquete
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotNull(message="paquete.blank_titulo")
      */
     private $titulo;
 
@@ -46,21 +46,80 @@ class Paquete
     private $slug;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="paquete.blank_descripcion")
-     * @Assert\Length(min = "10", minMessage = "paquete.too_short_descripcion")
+     * @ORM\Column(type="string")
      */
-    private $descripcion;
+    private $descripcionLargaTitulo;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @Assert\DateTime()
+     * @ORM\Column(type="string")
      */
-    private $publishedAt;
+    private $descripcionCortaTitulo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $descripcionCortaTexto;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $salidasTitulo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $salidasTexto;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $legalesTitulo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $legalesTexto;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\Date()
+     */
+    private $validoDesde;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\Date()
+     */
+    private $validoHasta;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $pasajeros;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $moneda;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $formaVenta;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $activado;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Bullet", mappedBy="paquete", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    private $bullets;
 
     public function __construct()
     {
-        $this->publishedAt = new \DateTime();
+        $this->bullets = new ArrayCollection();
     }
 
     public function getId()
@@ -88,23 +147,181 @@ class Paquete
         $this->slug = $slug;
     }
 
-    public function getDescripcion()
+    public function getDescripcionLargaTitulo()
     {
-        return $this->descripcion;
+        return $this->descripcionLargaTitulo;
     }
 
-    public function setDescripcion($descripcion)
+    public function setDescripcionLargaTitulo($descripcionLargaTitulo)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcionLargaTitulo = $descripcionLargaTitulo;
     }
 
-    public function getPublishedAt()
+    public function getDescripcionCortaTitulo()
     {
-        return $this->publishedAt;
+        return $this->descripcionCortaTitulo;
     }
 
-    public function setPublishedAt(\DateTime $publishedAt)
+    public function setDescripcionCortaTitulo($descripcionCortaTitulo)
     {
-        $this->publishedAt = $publishedAt;
+        $this->descripcionCortaTitulo = $descripcionCortaTitulo;
     }
+
+    public function getDescripcionCortaTexto()
+    {
+        return $this->descripcionCortaTexto;
+    }
+
+    public function setDescripcionCortaTexto($descripcionCortaTexto)
+    {
+        $this->descripcionCortaTexto = $descripcionCortaTexto;
+    }
+
+    public function getSalidasTitulo()
+    {
+        return $this->salidasTitulo;
+    }
+
+    public function setSalidasTitulo($salidasTitulo)
+    {
+        $this->salidasTitulo = $salidasTitulo;
+    }
+
+    public function getSalidasTexto()
+    {
+        return $this->salidasTexto;
+    }
+
+    public function setSalidasTexto($salidasTexto)
+    {
+        $this->salidasTexto = $salidasTexto;
+    }
+
+    public function getLegalesTitulo()
+    {
+        return $this->legalesTitulo;
+    }
+
+    public function setLegalesTitulo($legalesTitulo)
+    {
+        $this->legalesTitulo = $legalesTitulo;
+    }
+
+    public function getLegalesTexto()
+    {
+        return $this->legalesTexto;
+    }
+
+    public function setLegalesTexto($legalesTexto)
+    {
+        $this->legalesTexto = $legalesTexto;
+    }
+
+    public function getValidoDesde()
+    {
+        return $this->validoDesde;
+    }
+
+    public function setValidoDesde(\DateTime $validoDesde)
+    {
+        $this->validoDesde = $validoDesde;
+    }
+
+    public function getValidoHasta()
+    {
+        return $this->validoHasta;
+    }
+
+    public function setValidoHasta(\DateTime $validoHasta)
+    {
+        $this->validoHasta = $validoHasta;
+    }
+
+    public function getPasajeros()
+    {
+        $pasajerosParsed = explode("-", substr($this->pasajeros, 1));
+
+        return $pasajerosParsed;
+    }
+
+    public function setPasajeros($pasajeros)
+    {
+        $pasajerosParsed = "-".implode("-", $pasajeros);
+
+        $this->pasajeros = $pasajerosParsed;
+    }
+
+    public function getMoneda()
+    {
+        return $this->moneda;
+    }
+
+    public function getMonedaShow()
+    {
+        switch($this->moneda) {
+            case "USD": $monedaParsed = "Dólares"; break;
+            case "ARS": $monedaParsed = "Pesos"; break;
+            default: $monedaParsed = ""; break;
+        }
+        return $monedaParsed;
+    }
+
+    public function setMoneda($moneda)
+    {
+        $this->moneda = $moneda;
+    }
+
+    public function getFormaVenta()
+    {
+        return $this->formaVenta;
+    }
+
+    public function getFormaVentaShow()
+    {
+        switch($this->formaVenta) {
+            case 0: $formaVentaParsed = "Vender por beneficio"; break;
+            case 1: $formaVentaParsed = "Vender por pasajero"; break;
+            default: $formaVentaParsed = ""; break;
+        }
+        return $formaVentaParsed;
+    }
+
+    public function setFormaVenta($formaVenta)
+    {
+        $this->formaVenta = $formaVenta;
+    }
+
+    public function getActivado()
+    {
+        return $this->activado;
+    }
+
+    public function setActivado($activado)
+    {
+        $this->activado = $activado;
+    }
+
+    public function getBullets()
+    {
+        return $this->bullets;
+    }
+
+    public function addBullet(Bullet $bullet)
+    {
+        if (!$this->bullets->contains($bullet)) {
+            $bullet->setPaquete($this);
+            $this->bullets->add($bullet);
+        }
+
+        return $this;
+    }
+
+    public function removeBullet(Bullet $bullet)
+    {
+        if ($this->bullets->contains($bullet)) {
+            $this->bullets->removeElement($bullet);
+        }
+
+        return $this;        
+    }    
 }

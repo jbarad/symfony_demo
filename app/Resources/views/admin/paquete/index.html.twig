@@ -9,7 +9,8 @@
         <thead>
             <tr>
                 <th>{{ 'paquete.label.titulo'|trans }}</th>
-                <th><i class="fa fa-calendar"></i> {{ 'label.published_at'|trans }}</th>
+                <th><i class="fa fa-calendar"></i> {{ 'paquete.label.validoDesde'|trans }}</th>
+                <th><i class="fa fa-calendar"></i> {{ 'paquete.label.validoHasta'|trans }}</th>
                 <th><i class="fa fa-cogs"></i> {{ 'label.actions'|trans }}</th>
             </tr>
         </thead>
@@ -17,22 +18,37 @@
         {% for paquete in paquetes %}
             <tr>
                 <td>{{ paquete.titulo }}</td>
-                <td>{% if paquete.publishedAt %}{{ paquete.publishedAt|localizeddate('short', 'short') }}{% endif %}</td>
+                <td>{% if paquete.validoDesde %}{{ paquete.validoDesde|localizeddate('short', 'short') }}{% endif %}</td>
+                <td>{% if paquete.validoHasta %}{{ paquete.validoHasta|localizeddate('short', 'short') }}{% endif %}</td>
                 <td>
                     <div class="item-actions">
+                        <a href="{{ path('admin_paquete_edit', { id: paquete.id }) }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-edit"></i> {{ 'action.edit'|trans }}
+                        </a>
+
+                        <a href="{{ path('admin_paquete_list_delete', { id: paquete.id }) }}" class="btn btn-sm btn-danger">
+                            <i class="fa fa-remove"></i> {{ 'action.delete'|trans }}
+                        </a>
+
                         <a href="{{ path('admin_paquete_show', { id: paquete.id }) }}" class="btn btn-sm btn-default">
                             {{ 'action.show'|trans }}
                         </a>
 
-                        <a href="{{ path('admin_paquete_edit', { id: paquete.id }) }}" class="btn btn-sm btn-primary">
-                            <i class="fa fa-edit"></i> {{ 'action.edit'|trans }}
+                        {% if paquete.activado %}
+                        <a href="{{ path('admin_paquete_disable', { id: paquete.id }) }}" class="btn btn-sm btn-warning">
+                            <i class="fa fa-edit"></i> {{ 'action.disable'|trans }}
                         </a>
+                        {% else %}
+                        <a href="{{ path('admin_paquete_enable', { id: paquete.id }) }}" class="btn btn-sm btn-success">
+                            <i class="fa fa-edit"></i> {{ 'action.enable'|trans }}
+                        </a>
+                        {% endif %}
                     </div>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3" align="center">{{ 'paquete.no_paquetes_found'|trans }}</td>
+                <td colspan="4" align="center">{{ 'paquete.no_paquetes_found'|trans }}</td>
            </tr>
         {% endfor %}
         </tbody>
