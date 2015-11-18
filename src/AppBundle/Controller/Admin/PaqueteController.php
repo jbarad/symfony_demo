@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Paquete;
+use AppBundle\Entity\Fecha;
 
 /**
  * Controller used to manage paquete contents in the backend.
@@ -164,26 +165,18 @@ class PaqueteController extends Controller
      */
     public function fechasAction(Paquete $paquete, Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $fechasJs = "";
+        if ($paquete->getFechas()) {
+            foreach($paquete->getFechas() as $fecha) {
+                $fechasJs = $fechasJs . $fecha->getFecha()->format('d-m-Y') . "|";
+            }
 
-        $editForm = $this->createForm(new PaqueteType(), $paquete);
-        $deleteForm = $this->createDeleteForm($paquete);
-
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $paquete->setSlug($this->get('slugger')->slugify($paquete->getTitulo()));
-            $entityManager->flush();
-
-            $this->addFlash('success', 'paquete.updated_successfully');
-
-            return $this->redirectToRoute('admin_paquete_edit', array('id' => $paquete->getId()));
+            $fechasJs = substr($fechasJs, 0, -1);
         }
 
         return $this->render('admin/paquete/fechas.html.twig', array(
-            'paquete'        => $paquete,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'paquete' => $paquete,
+            'fechasJs' => $fechasJs
         ));
     }
 
@@ -232,6 +225,55 @@ class PaqueteController extends Controller
         $entityManager->flush();
 
         $this->addFlash('success', 'paquete.deleted_successfully');
+
+        return $this->redirectToRoute('admin_paquete_index');
+    }
+
+    /**
+     * Actualiza el módulo de Fechas y stock de un paquete.
+     *
+     * @Route("/{id}/fechas/update", requirements={"id" = "\d+"}, name="admin_paquete_fechas_update")
+     * @Method({"GET", "POST"})
+     */
+    public function fechasUpdateAction(Request $request, Paquete $paquete)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repoFecha = $em->getRepository('AppBundle:Fecha');
+
+        $fechasActuales = $repoFecha->findByPaquete($paquete);
+        
+        foreach($fechasActuales as $fechaActual) {
+            $stocksActuales[$fechaActual->getFecha()->format('d-m-Y')]=$fechaActual->getStock();
+            $em->remove($fechaActual);
+            $em->flush();
+        }
+
+        $dias = $this->get('request')->request->get('dia');
+        $cupo = $this->get('request')->request->get('cupo');
+        $precio = $this->get('request')->request->get('precio');
+        $afip = $this->get('request')->request->get('afip');
+
+        foreach ($dias as $dia) {
+            $stockActual = isset($stocksActuales[$dia])&&$stocksActuales[$dia]?$stocksActuales[$dia]:0;
+            $stock = (int)$stockActual + (int)$cupo[$dia];
+            if ($stock <= 0) {
+                $stock = 0;
+            }
+
+            $fechaParsed = date_create($dia);
+
+            $fecha = new Fecha();
+            $fecha->setPaquete($paquete);
+            $fecha->setFecha($fechaParsed);
+            $fecha->setStock($stock);
+            $fecha->setPrecio((int)$precio[$dia]);
+            $fecha->setAfip((int)$afip[$dia]);
+
+            $em->persist($fecha);
+        }
+        $em->flush();
+
+        $this->addFlash('success', 'paquete.fechas.updated_successfully');
 
         return $this->redirectToRoute('admin_paquete_index');
     }

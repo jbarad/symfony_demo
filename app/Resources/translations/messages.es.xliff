@@ -373,6 +373,10 @@
                 <source>paquete.updated_successfully</source>
                 <target>El paquete ha sido actualizado satisfactoriamente!</target>
             </trans-unit>
+            <trans-unit id="paquete.fechas.updated_successfully">
+                <source>paquete.fechas.updated_successfully</source>
+                <target>El módulo de Fechas y stock del paquete ha sido actualizado satisfactoriamente!</target>
+            </trans-unit>
             <trans-unit id="paquete.deleted_successfully">
                 <source>paquete.deleted_successfully</source>
                 <target>El paquete ha sido borrado satisfactoriamente!</target>

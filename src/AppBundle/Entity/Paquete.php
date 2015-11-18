@@ -117,9 +117,15 @@ class Paquete
      */
     private $bullets;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Fecha", mappedBy="paquete", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    private $fechas;
+
     public function __construct()
     {
         $this->bullets = new ArrayCollection();
+        $this->fechas = new ArrayCollection();
     }
 
     public function getId()
@@ -306,6 +312,11 @@ class Paquete
         return $this->bullets;
     }
 
+    public function getFechas()
+    {
+        return $this->fechas;
+    }
+
     public function addBullet(Bullet $bullet)
     {
         if (!$this->bullets->contains($bullet)) {
@@ -320,6 +331,25 @@ class Paquete
     {
         if ($this->bullets->contains($bullet)) {
             $this->bullets->removeElement($bullet);
+        }
+
+        return $this;        
+    }    
+
+    public function addFecha(Fecha $fecha)
+    {
+        if (!$this->fechas->contains($fecha)) {
+            $fecha->setPaquete($this);
+            $this->fechas->add($fecha);
+        }
+
+        return $this;
+    }
+
+    public function removeFecha(Fecha $fecha)
+    {
+        if ($this->fechas->contains($fecha)) {
+            $this->fechas->removeElement($fecha);
         }
 
         return $this;        
