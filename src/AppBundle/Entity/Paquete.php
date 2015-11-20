@@ -122,10 +122,16 @@ class Paquete
      */
     private $fechas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="paquete", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    private $images;
+
     public function __construct()
     {
         $this->bullets = new ArrayCollection();
         $this->fechas = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId()
@@ -317,6 +323,11 @@ class Paquete
         return $this->fechas;
     }
 
+    public function getImages()
+    {
+        return $this->images;
+    }
+
     public function addBullet(Bullet $bullet)
     {
         if (!$this->bullets->contains($bullet)) {
@@ -353,5 +364,5 @@ class Paquete
         }
 
         return $this;        
-    }    
+    }
 }

@@ -1,0 +1,58 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_paquete_images' %}
+
+{% block main %}
+    <h1>{{ 'title.edit_paquete_images'|trans({'%id%': paquete.id}) }}</h1>
+
+    {{ include('default/_flash_messages.html.twig') }}
+
+	{{ form_start(imagesForm, { attr: attr|default({}) }) }}
+		<hr/><b><u>{{ 'paquete.actual_images'|trans }}</u></b>
+		<br /><br />
+
+		{% if paquete.images.count > 0 %}
+		<div class="flexslider">
+			<ul class="slides">
+			{% for image in paquete.images %}
+				<li>
+					<img src="{{ asset(image.getWebPath()) }}" width="100%" />
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+		<ul>
+		{% for image in paquete.images %}
+			<li>
+				{{ image.getWebPath() }}&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="{{ path('admin_paquete_images_delete', { id: image.id }) }}" class="btn btn-sm btn-danger">Eliminar</a>
+			</li>
+		{% endfor %}
+		</ul>
+		{% else %}
+		<font color="red">{{ 'paquete.no_images_found'|trans }}</font>
+		{% endif %}
+
+		<hr/><b><u>{{ 'paquete.new_images'|trans }}</u></b>
+		<br /><br />
+
+	    {{ form_row(imagesForm.attachment) }}
+
+	    <hr/>
+	 	<input type="submit" value="Guardar cambios" class="btn btn-primary" />
+		<a href="/admin/paquete/" class="btn btn-link">Volver al listado</a>
+	{{ form_end(imagesForm) }}
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.0/flexslider.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.0/jquery.flexslider.min.js"></script>
+	<script type="text/javascript">
+		// Can also be used with $(document).ready()
+		$(document).ready(function() {
+		  $('.flexslider').flexslider({
+		    animation: "slide",
+		    controlNav: false,
+		  });
+		});
+	</script>	
+{% endblock %}

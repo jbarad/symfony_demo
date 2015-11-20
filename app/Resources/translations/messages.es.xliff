@@ -71,6 +71,10 @@
                 <source>title.edit_paquete_fechas</source>
                 <target>Editar paquete #%id% - Fechas y stock</target>
             </trans-unit>
+            <trans-unit id="title.edit_paquete_images">
+                <source>title.edit_paquete_images</source>
+                <target>Editar paquete #%id% - Imágenes</target>
+            </trans-unit>
             <trans-unit id="title.add_comment">
                 <source>title.add_comment</source>
                 <target>Añadir un comentario</target>
@@ -95,6 +99,10 @@
             <trans-unit id="action.fechas">
                 <source>action.fechas</source>
                 <target>Fechas y stock</target>
+            </trans-unit>
+            <trans-unit id="action.images">
+                <source>action.images</source>
+                <target>Imágenes</target>
             </trans-unit>
             <trans-unit id="action.edit_post">
                 <source>action.edit_post</source>
@@ -365,6 +373,10 @@
                 <source>paquete.no_bullets_found</source>
                 <target>No se ha encontrado ningún bullet para la descripción larga.</target>
             </trans-unit>
+            <trans-unit id="paquete.no_images_found">
+                <source>paquete.no_images_found</source>
+                <target>No se ha encontrado ninguna imagen cargada en el paquete.</target>
+            </trans-unit>
             <trans-unit id="paquete.created_successfully">
                 <source>paquete.created_successfully</source>
                 <target>El paquete ha sido creado satisfactoriamente!</target>
@@ -377,9 +389,17 @@
                 <source>paquete.fechas.updated_successfully</source>
                 <target>El módulo de Fechas y stock del paquete ha sido actualizado satisfactoriamente!</target>
             </trans-unit>
+            <trans-unit id="paquete.images.updated_successfully">
+                <source>paquete.images.updated_successfully</source>
+                <target>El módulo de Imágenes del paquete ha sido actualizado satisfactoriamente!</target>
+            </trans-unit>
             <trans-unit id="paquete.deleted_successfully">
                 <source>paquete.deleted_successfully</source>
                 <target>El paquete ha sido borrado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="image.deleted_successfully">
+                <source>image.deleted_successfully</source>
+                <target>La imagen ha sido borrada satisfactoriamente!</target>
             </trans-unit>
             <trans-unit id="paquete.enabled_successfully">
                 <source>paquete.enabled_successfully</source>
@@ -388,6 +408,14 @@
             <trans-unit id="paquete.disabled_successfully">
                 <source>paquete.disabled_successfully</source>
                 <target>El paquete ha sido desactivado satisfactoriamente!</target>
+            </trans-unit>
+            <trans-unit id="paquete.actual_images">
+                <source>paquete.actual_images</source>
+                <target>Imágenes cargadas actualmente</target>
+            </trans-unit>
+            <trans-unit id="paquete.new_images">
+                <source>paquete.new_images</source>
+                <target>Imágenes nuevas</target>
             </trans-unit>
 
             <trans-unit id="help.app_description">

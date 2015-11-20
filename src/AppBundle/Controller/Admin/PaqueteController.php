@@ -12,6 +12,7 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Form\PaqueteType;
+use AppBundle\Form\ImageType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -19,6 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Paquete;
 use AppBundle\Entity\Fecha;
+use AppBundle\Entity\Image;
 
 /**
  * Controller used to manage paquete contents in the backend.
@@ -181,6 +183,61 @@ class PaqueteController extends Controller
     }
 
     /**
+     * @Route("/{id}/images", requirements={"id" = "\d+"}, name="admin_paquete_images")
+     * @Method({"GET", "POST"})
+     */
+    public function imagesAction(Paquete $paquete, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $imagesForm = $this->createForm(new ImageType());
+
+        $imagesForm->handleRequest($request);
+
+        if ($imagesForm->isValid()) {
+            $files = $imagesForm['attachment']->getData();
+
+            foreach ($files as $file) {
+                $image = new Image();
+                
+                $path = $image->upload($file);
+
+                $image->setPath($path);
+                $image->setPaquete($paquete);
+
+                $em->persist($image);
+            }
+            $em->flush();
+
+            $this->addFlash('success', 'paquete.images.updated_successfully');
+
+            return $this->redirectToRoute('admin_paquete_index');
+        }
+
+        return $this->render('admin/paquete/images.html.twig', array(
+            'paquete' => $paquete,
+            'imagesForm' => $imagesForm->createView()
+        ));
+    }
+
+    /**
+     * @Route("/{id}/images/delete", name="admin_paquete_images_delete")
+     * @Method({"GET", "POST"})
+     */
+    public function imagesDeleteAction(Request $request, Image $image)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $image->removeUpload();
+        $entityManager->remove($image);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'image.deleted_successfully');
+
+        return $this->redirectToRoute('admin_paquete_images', array('id' => $image->getPaquete()->getId()));
+    }
+
+    /**
      * Deletes a Paquete entity.
      *
      * @Route("/{id}", name="admin_paquete_delete")
@@ -197,6 +254,12 @@ class PaqueteController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if ($paquete->getImages()) {
+                foreach($paquete->getImages() as $image) {
+                    $image->removeUpload();
+                }
+            }
 
             $entityManager->remove($paquete);
             $entityManager->flush();
@@ -220,6 +283,12 @@ class PaqueteController extends Controller
     public function listDeleteAction(Request $request, Paquete $paquete)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        if ($paquete->getImages()) {
+            foreach($paquete->getImages() as $image) {
+                $image->removeUpload();
+            }
+        }
 
         $entityManager->remove($paquete);
         $entityManager->flush();
