@@ -1,0 +1,593 @@
+{% extends 'base_front.html.twig' %}
+
+{% block body_id 'paquete_detalle' %}
+
+{% block main %}
+	<div id="page" class="detail clearfix special-deals">
+
+		<div class="top-area clearfix">
+			<div class="currency-conversion">
+				<label for="currency">Ver moneda en</label>
+				<select name="currency" id="currency">
+					<option value="{{ currencyPesos.conversion }}" code="{{ currencyPesos.code }}" symbol="{{ currencyPesos.symbol }}">Pesos Argentinos</option>
+					<option value="{{ currencyDolares.conversion }}" code="{{ currencyDolares.code }}" symbol="{{ currencyDolares.symbol }}">D&oacute;lares({{ currencyPesos.symbol ~ ' ' ~ currencyPesos.conversion|number_format(2, ',', '.') }})</option>
+				</select>
+			</div>
+		</div>
+		<!-- .top-area -->
+
+		<div class="l-sidebar">
+
+			<div class="summary">
+				<div class="inside">
+
+					<div class="item paxs">
+						<label for="paxs">Pasajeros</label>
+						<select name="paxs" id="paxs">
+						{% for pasajerosValue in paquete.pasajeros %}
+							<option value="{{ pasajerosValue }}"{{ (paquete.pasajeroDefault==pasajerosValue)?" selected":"" }}>{{ pasajerosValue }} pasajeros</option>
+						{% endfor %}
+						</select>
+					</div>
+
+					<div class="item calendar"></div>
+					<div id="fechas_info">
+					{% if paquete.fechas.count > 0 %}
+					{% for fecha in paquete.fechas %}
+						<input type="hidden" id="{{ fecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}" stock="{{ fecha.stock }}" precio="{{ fecha.precio }}" precio_afip="{{ fecha.afip }}">
+					{% endfor %}
+					{% endif %}
+					</div>
+
+					<div class="item price-deal">
+						<p>
+							Desde <span class="currency" value="{{ currencyPesos.conversion }}" code="{{ currencyPesos.code }}">{{ currencyPesos.symbol }}</span> 
+							<span class="number" value="{{ paquete.mejorFecha.precio }}">{{ paquete.mejorFecha.precio }}</span>
+						</p>
+						<p class="mensaje-precio">
+							Precio por persona viajando
+							{{ (paquete.pasajeroDefault==1)?"1 persona":paquete.pasajeroDefault~" personas" }}
+						</p>
+					</div>
+
+										<div class="item valid-date">
+						<p>
+							<span class="icon icon-clock"></span> Promoci&oacute;n
+							v&aacute;lida hasta el {{ paquete.validoHasta|localizeddate('short', 'short')|date('d \\d\\e F \\d\\e\\l Y') }} o hasta agotar stock.
+						</p>
+					</div>
+					<div class="item deal-dates">
+						<p>
+							<span class="icon icon-calendar"></span> 
+							<p id="salida_texto">Desde el {{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('d \\d\\e F \\d\\e\\l Y') }}</p>
+						</p>
+					</div>
+					
+					
+
+					<form id="formComprar" action="/beneficiospromocionado_addtocart" method="post">
+						<input type="hidden" class="id" name="id" value="{{ paquete.id }}"/>
+						<input type="hidden" class="fecha" name="fecha" value="{{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}"/>
+						<input type="hidden" class="pasajeros" name="pasajeros" value="{{ paquete.pasajeroDefault }}"/>
+													<input type="submit" onclick="datalayersEcommercePackagesClass.trackProductClick();" class="continue-btn callout btn btn-next btn-primary dle-trackProductClick" value="Continuar" />
+							</form>
+											
+				</div>
+			</div>
+
+			<div class="module finance">
+				<a href="http://www.avantrip.com/oportunidades/financiacion-avantrip" target="_blank">
+          			<img src="https://static.avantrip.com//fkt-common/assets/financiacion/financiacion-avantrip.jpg" border="0" title="Encontra en Avantrip la mejor Financiacion" class="imgFinanciacion">
+          		</a>				
+	        </div>
+
+        	<div class="module newsletter">
+		<form action="" method="post">
+			<div class="inside">
+				<h3 class="title">&iexcl;Adelantate a las ofertas!</h3>
+				<p>Suscribite y aprovech&aacute; las oportunidades &iexcl;antes de
+					que se agoten!</p>
+				<input type="text" name="email" id="email" placeholder="Ingres&aacute; tu email" />
+				<button id="suscribirme" class="callout btn btn-generic">Suscribirme</button>
+			</div>
+		</form>
+	</div>
+
+
+
+        <div class="module related-deals">
+            <div class="inside">
+                <h3 class="title">Ofertas que pueden interesarte</h3>
+                <table>
+                    <tbody>
+						{% if paquetesCercanos %}
+						{% for key, paqueteCercano in paquetesCercanos %}
+                            <tr onclick="datalayersEcommercePackagesClass.trackRelatedPromotionsClick();">
+                                <td><a href="{{ path('paquete_detalle', { id: paqueteCercano.id }) }}">{{ paqueteCercano.titulo }}</a></td>
+                                <td class="price">
+                                    <span class="from">Desde</span> 
+                                    <span class="currency" symbol="ARS" value="1">AR$</span> 
+                                    <span class="number">{{ paqueteCercano.precio }}</span>
+	                                <div class="dle-trackPromotionData" style="display:none" data-track='
+	                                	{
+	                                		"id": "{{ paqueteCercano.id }}",
+	                                		"name": "{{ paqueteCercano.titulo }}",
+	                                		"price": "{{ paqueteCercano.precio }}",
+	                                		"brand": "{{ paqueteCercano.titulo }}",
+	                                		"category": "paquetes",
+	                                		"position": "{{ key+1 }}"
+	                                	}
+	                                '>
+	                                </div>
+                                </td>
+                            </tr>
+						{% endfor %}
+						{% endif %}
+	                </tbody>
+                </table>
+				</div>
+			</div>
+
+		</div>
+		<!-- .l-sidebar -->
+
+		<div class="hotel">
+			<div class="inside">
+
+				<div class="title clearfix">
+					<h1 class="heading">
+						{{ paquete.titulo }}</h1>
+				</div>
+
+				{% if paquete.images.count > 0 %}
+				<div id="carousel-content">
+					<div id="gallery" class="gal-content">
+						<div class="slideshow-container">
+							<div id="loading" class="loader"></div>
+							<div id="slideshow" class="gal-slideshow"></div>
+							<div id="caption" class="caption-container"></div>
+							<div id="controls" class="controls"></div>
+						</div>
+					</div>
+					<div class="gal-right">
+						<div id="thumbs">
+							<ul class="thumbs noscript">
+							{% for image in paquete.images %}
+								<li>
+									<a class="thumb" href="/uploads/Paquete/{{ image.path }}" title="titulo">
+										<img src="/uploads/Paquete/{{ image.path }}" alt="your image title again for graceful degradation" />
+									</a>
+								</li>
+							{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<script	type="text/javascript" src="{{ absoluteUrl }}/js/jquery.galleriffic.js"></script>
+				<script type="text/javascript">
+				jQuery(document).ready(function($) {
+				    var gallery = $('#thumbs').galleriffic({
+				        delay:                     3000, // in milliseconds
+				        numThumbs:                 6, // The number of thumbnails to show page
+				        preloadAhead:              40, // Set to -1 to preload all images
+				        enableTopPager:            false,
+				        enableBottomPager:         true,
+				        maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
+				        imageContainerSel:         '#slideshow',
+				        controlsContainerSel:      '#controls',
+				        captionContainerSel:       '#caption',
+				        loadingContainerSel:       '#loading',
+				        renderSSControls:          false, // Specifies whether the slideshow's Play and Pause links should be rendered
+				        renderNavControls:         true, // Specifies whether the slideshow's Next and Previous links should be rendered
+				        playLinkText:              'Play',
+				        pauseLinkText:             'Pause',
+				        prevLinkText:              '',
+				        nextLinkText:              '',
+				        nextPageLinkText:          'Siguiente',
+				        prevPageLinkText:          'Anterior',
+				        enableHistory:             false, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
+				        enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
+				        autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
+				        syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
+				        defaultTransitionDuration: 1000, // If using the default transitions, specifies the duration of the transitions
+				        onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
+				        onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
+				        onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
+				        onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
+				        onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
+				        onImageAdded:              undefined, // accepts a delegate like such: function(imageData, $li) { ... }
+				        onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
+				    });
+				});
+				</script>
+				{% endif %}
+
+				<div class="information">
+
+					<h2 class="title">{{ paquete.descripcionCortaTitulo }}</h2>
+					<p>{{ paquete.descripcionCortaTexto|nl2br }}</p>
+
+					<h2 class="title">{{ paquete.descripcionLargaTitulo }}</h2>
+					<ul class="l-stacked bullets">
+					{% for bullet in paquete.bullets %}
+						<li>{{ bullet.texto }}</li>
+					{% endfor %}
+					</ul>
+
+					<h2 class="title">{{ paquete.salidasTitulo }}</h2>
+					<p>{{ paquete.salidasTexto|nl2br }}</p>
+
+					<h2 class="title">{{ paquete.legalesTitulo }}</h2>
+					<p>{{ paquete.legalesTexto|nl2br }}</p>
+
+				</div>
+			</div>
+		</div>
+		<!-- .hotel -->
+	</div>
+	<!-- #page-->
+
+	<script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.qtip2.js"></script>
+	<script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.simplemodal-1.4.4.js"></script>
+	<script type="text/javascript">
+		if (!console) console = {log: function() {}};
+
+		jQuery(document).ready(function(){
+
+			//Otorga la funcionalidad al suscribirse
+			jQuery("#suscribirme").live("click", function(event){
+				var email = $('.newsletter input#email').val();
+				var seccion = 'beneficios';
+
+				if(validarEmail(email)) {
+				  _kmq.push(['identify', email]); // Agrego metodo para identificacion del usuario kissmetrics
+				}
+
+				event.preventDefault();
+				$.ajax({
+					url: "http://avantrip.ongoing.pm/subscribe",
+					data: {'email': email, 'seccion': seccion, 'currentUrl': window.location.href },
+					type: 'POST',
+					success: function(datos){
+						$('.newsletter').html(datos);
+					}
+				});
+			});
+			
+			$('.item.calendar').datepicker( { 
+				changeMonth: false, 
+				minDate: "{{ paquete.validoDesde|localizeddate('short', 'short')|date('Y-m-d') }}", 
+				maxDate: "{{ paquete.validoHasta|localizeddate('short', 'short')|date('Y-m-d') }}",
+				dateFormat: "yy-mm-dd",
+				defaultDate: "{{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}",
+				beforeShowDay: checkGoodDates,
+				onSelect: updateFechaData,
+				onChangeMonthYear: asignarQtips
+			} );
+
+			$('#paxs').change(function(){
+				var cant_pasajeros = $(this).val()
+				if(cant_pasajeros == 1){
+					console.log($(this).val());
+					$('.mensaje-precio').text("Precio por persona viajando 1 persona")
+				}else{
+					$('.mensaje-precio').text("Precio por persona viajando "+cant_pasajeros+" personas")
+				}
+
+				$('form .pasajeros').val(cant_pasajeros);
+
+				$('.item.calendar').datepicker( "refresh"  );
+
+				primer_dia = $('.ui-datepicker-calendar td.available.stock a')[0];
+
+				var mes = mesEnIngles($(".ui-datepicker-month").text());
+				var year = $(".ui-datepicker-year").text();
+				var dia = $(primer_dia).text()
+				
+				var date = new Date(dia+" "+mes+" "+year);
+
+				var texto_dia = date.getDate();
+				if((date.getDate()) < 10){
+					texto_dia = "0"+(date.getDate());
+				}else{
+					texto_dia = (date.getDate());
+				}
+				if((date.getMonth()+1) < 10){
+					texto_mes = "0"+(date.getMonth()+1);
+				}else{
+					texto_mes = (date.getMonth()+1);
+				}
+				var texto_year = date.getYear()+1900;
+
+				fecha = ""+texto_year+"-"+texto_mes+"-"+texto_dia+"";
+
+				$('.item.calendar').datepicker( "setDate", fecha);
+				updateFechaData(fecha);
+				
+			});
+
+			//*********************Seteo de tooltips*********************************
+			asignarQtips();
+			function asignarQtips(){
+				array_fechas = new Array();
+				if($.browser.msie){
+					todas_fechas = new Array();
+					{% for fecha in paquete.fechas %}
+					var array_fechas = {
+				            fecha: "{{ fecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}",
+				            precio: '{{ fecha.precio }}',
+				            stock: '{{ fecha.stock }}'
+				    };
+					todas_fechas.push(array_fechas);
+					{% endfor %}
+								mes = mesEnIngles($(".ui-datepicker-month").text());
+					year = $(".ui-datepicker-year").text();
+
+					$('.ui-datepicker-calendar td.stock ').each(function(i){
+						_this = $(this);
+
+						dia = _this.text();
+
+						date = formatearFecha(dia,mes,year);
+
+						currencySymbol = "AR$";
+
+						for (var i = 0; i < todas_fechas.length; i++) {
+							if(todas_fechas[i].fecha == date){
+								texto_tooltip = currencySymbol + " " + todas_fechas[i].precio;
+								texto_fecha = currencySymbol + " " + todas_fechas[i].fecha;
+								texto_stock = todas_fechas[i].stock;
+							}	
+						}
+
+						switch(texto_stock){
+						case 1:
+							texto_tooltip = texto_tooltip + "<br> &iexcl;&Uacute;ltimo lugar!";
+							break;
+						case 0:
+							texto_tooltip = "Agotado"
+							break;
+						default:
+							if(texto_stock <= 4){
+								texto_tooltip = texto_tooltip + "<br> &iexcl;&Uacute;ltimos "+texto_stock+" lugares!";
+							}
+							
+						}
+						
+						if(texto_stock == 0){
+							texto_tooltip = "Agotado";
+						}
+
+						_this.qtip({
+							content: texto_tooltip,
+							position: {
+								my: 'bottom center',  // Position my top left...
+								at: 'top center', // at the bottom right of...
+								target: _this // my target
+							},
+							style: {
+								classes: 'qtip-dark qtip-shadow qtip-rounded'
+						     }
+						});
+					});
+
+				}else{
+					array_fechas = new Array();
+					{% for fecha in paquete.fechas %}
+					array_fechas["{{ fecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}"] = {fecha:"{{ fecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}",precio:'{{ fecha.precio }}',stock:{{ fecha.stock }}};
+					{% endfor %}
+								
+					mes = mesEnIngles($(".ui-datepicker-month").text());
+					year = $(".ui-datepicker-year").text();
+					$('.ui-datepicker-calendar td.stock ').each(function(i){
+						_this = $(this);
+
+						dia = _this.text();
+
+						date = formatearFecha(dia,mes,year);
+
+						currencySymbol = "AR$";
+
+						texto_tooltip = currencySymbol + " " + array_fechas[date].precio;
+
+						switch(array_fechas[date].stock){
+						case 1:
+							texto_tooltip = texto_tooltip + "<br> &iexcl;&Uacute;ltimo lugar!";
+							break;
+						case 0:
+							texto_tooltip = "Agotado"
+							break;
+						default:
+							if(array_fechas[date].stock <= 4){
+								texto_tooltip = texto_tooltip + "<br> &iexcl;&Uacute;ltimos "+array_fechas[date].stock+" lugares!";
+							}
+							
+						}
+						
+						if(array_fechas[date].stock == 0){
+							texto_tooltip = "Agotado";
+						}
+
+						_this.qtip({
+							content: texto_tooltip,
+							position: {
+								my: 'bottom center',  // Position my top left...
+								at: 'top center', // at the bottom right of...
+								target: _this // my target
+							},
+							style: {
+								classes: 'qtip-dark qtip-shadow qtip-rounded'
+						     }
+						});
+					});
+				}
+			}
+
+			function formatearFecha(dia,mes,year){
+
+				var date = new Date(dia+" "+mes+" "+year);
+
+				var texto_dia = date.getDate();
+				if((date.getDate()) < 10){
+					texto_dia = "0"+(date.getDate());
+				}else{
+					texto_dia = (date.getDate());
+				}
+				if((date.getMonth()+1) < 10){
+					texto_mes = "0"+(date.getMonth()+1);
+				}else{
+					texto_mes = (date.getMonth()+1);
+				}
+				if($.browser.msie){
+					var texto_year = date.getYear();
+				}else{
+					var texto_year = date.getYear()+1900;
+				}
+				//console.log('texto_dia: ' + texto_dia + ' texto_mes: ' + texto_mes + ' texto_year: ' + texto_year)
+				date = ""+texto_year+"-"+texto_mes+"-"+texto_dia+"";
+				return date;
+			}
+
+			function mesEnIngles(mes){
+				switch(mes){
+				case "Enero":
+					return "january";
+					break;
+				case "Febrero":
+					return "february";
+					break;
+				case "Marzo":
+					return "march";
+					break;
+				case "Abril":
+					return "april";
+					break;
+				case "Mayo":
+					return "may";
+					break;
+				case "Junio":
+					return "june";
+					break;
+				case "Julio":
+					return "july";
+					break;
+				case "Agosto":
+					return "august";
+					break;
+				case "Septiembre":
+					return "september";
+					break;
+				case "Octubre":
+					return "october";
+					break;
+				case "Noviembre":
+					return "november";
+					break;
+				case "Diciembre":
+					return "december";
+					break;
+				default:
+					return mes;			
+				}
+			}
+
+			/* ================================ Extender Metodo Nativo de Qtip ================================== */
+			var updateDatepicker = $.datepicker._updateDatepicker;
+			
+			$.datepicker._updateDatepicker = function () {
+				updateDatepicker.apply(this, arguments);
+				asignarQtips();
+			};
+			
+				
+
+			//*************************************************************************
+			
+			/*========================= OVERLAY de error===========================*/
+			
+			
+			//*************************************************************************
+
+			function checkGoodDates(mydate){
+
+				var a_devolver=false;
+				var returnclass ="unavailable";
+				checkdate = $.datepicker.formatDate('yy-mm-dd', mydate);
+				myGoodDates = new Array();
+					{% for key, fecha in paquete.fechas %}
+					myGoodDates[{{ key }}] = "{{ fecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}";
+					{% endfor %}
+						var promoVencida = false;
+				var promoAgotada = false;
+				var pasajeros = parseInt($('#paxs').val());
+				var compraPorPasajero = true;
+				if(!promoVencida || promoAgotada){
+					for(var i = 0; i < myGoodDates.length; i++)
+				    {  
+				       stock_fecha = parseInt($('#fechas_info #'+myGoodDates[i]).attr('stock'));
+						    	
+				       if((myGoodDates[i] == checkdate)){
+					   		if((!compraPorPasajero && stock_fecha != 0) || (compraPorPasajero && (stock_fecha >= pasajeros) )){
+					   			returnclass= "available stock";
+					   			a_devolver = true;
+						   	}else{
+						   		returnclass= "unavailable stock";
+							}
+					        
+				       }
+				    }
+				}
+				return [a_devolver,returnclass];
+			}
+
+			function updateFechaData(mydate){
+
+				stock = $('#fechas_info #'+mydate).attr('stock');
+				precio = $('#fechas_info #'+mydate).attr('precio');
+				precio_afip = $('#fechas_info #'+mydate).attr('precio_afip');
+				$('.price-deal .number').text(precio);
+
+				$('form .fecha').val(mydate);
+				mydate = mydate.split("-");
+				year = parseInt(mydate[0]);
+				month = parseInt(mydate[1],10) - 1;
+				day = parseInt(mydate[2],10);
+				var myDate = new Date(year, month, day);
+
+				myDate.setDate(myDate.getDate());
+				fecha_formateada = $.datepicker.formatDate("dd 'de' MM 'del' yy", myDate);
+				$('#salida_texto').text("Saliendo el "+fecha_formateada);
+
+				$('form .precio').val(precio);
+				$('form .precio_afip').val(precio_afip);
+				$('form .stock').val(stock);
+				$(".price-deal .number").attr('value',precio);
+
+				actualizarPrecioSegunCurrency();
+				
+			}
+
+			//********************camio de currency*************************
+
+			$('.currency-conversion #currency').change(function(){
+
+				//
+				actualizarPrecioSegunCurrency();
+
+			});
+
+			function actualizarPrecioSegunCurrency(){
+				_this = $($('.currency-conversion #currency'));
+				newCurrency = _this.val();
+				newSymbol = _this.find('option:selected').attr('symbol');
+				
+
+				mainValue = $(".price-deal .number").attr('value');
+				oldCurrency = $(".price-deal .currency").attr('value');
+				$(".price-deal .number").text( Math.ceil( mainValue * newCurrency / oldCurrency));
+				$(".price-deal .currency").text(newSymbol);
+			}
+		});
+	</script>
+
+{% endblock %}

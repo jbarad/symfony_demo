@@ -127,6 +127,10 @@ class Paquete
      */
     private $images;
 
+    private $mejor_fecha;
+
+    private $pasajero_default;
+
     public function __construct()
     {
         $this->bullets = new ArrayCollection();
@@ -256,6 +260,18 @@ class Paquete
         return $pasajerosParsed;
     }
 
+    public function getPasajerosFront()
+    {
+        $pasajeros = $this->getPasajeros();
+
+        $pasajerosParsed = array();
+        foreach($pasajeros as $pasajero) {
+            $pasajerosParsed[$pasajero] = 1;
+        }
+
+        return $pasajerosParsed;
+    }
+
     public function setPasajeros($pasajeros)
     {
         $pasajerosParsed = "-".implode("-", $pasajeros);
@@ -364,5 +380,63 @@ class Paquete
         }
 
         return $this;        
+    }
+
+    private function getFecha($fecha_default){
+        $res = false;
+        if ($fecha_default) {
+            foreach ($this->fechas as $fecha){
+                if(strtotime($fecha->getFecha()) == strtotime($fecha_default)){
+                    $res = $fecha;
+                }
+            }
+        }
+        return $res;
+    }
+
+    private function stockDisponible($fecha){
+        $res = false;
+        $stock = $fecha->getStock();
+        if((!$this->formaVenta &&  $stock > 0) || ($this->formaVenta && $stock >= $this->pasajero_default)){
+            $res = true;
+        }
+        return $res;
+    }
+
+    public function setMejorFecha($fecha_default){
+        $mejor_fecha = $this->getFecha($fecha_default);
+        
+        if(!($mejor_fecha ) || !($this->stockDisponible($mejor_fecha))){
+            foreach ($this->fechas as $fecha){
+                if(!$mejor_fecha && $this->stockDisponible($fecha) && (strtotime($fecha->getFecha()->format('Y-m-d')) >= strtotime(date("Y-m-d")))){
+                    $mejor_fecha = $fecha;
+                    break;
+                }
+            }
+            foreach ($this->fechas as $fecha){
+                if(($mejor_fecha) && ($this->stockDisponible($fecha) && ($fecha->getPrecio() < $mejor_fecha->getPrecio()) && (strtotime($fecha->getFecha()) >= strtotime(date("Y-m-d")))) ){
+                    $mejor_fecha = $fecha;
+                }
+            }
+        }
+        $this->mejor_fecha = $mejor_fecha;
+    }
+
+    public function getMejorFecha()
+    {
+        return $this->mejor_fecha;
+    }
+
+    public function setPasajeroDefault($param){
+        if(array_key_exists($param, $this->getPasajerosFront())){
+            $this->pasajero_default = (int) $param;
+        }else {
+            $this->pasajero_default = (int) key($this->getPasajerosFront());
+        }
+    }
+
+    public function getPasajeroDefault()
+    {
+        return $this->pasajero_default;
     }
 }
