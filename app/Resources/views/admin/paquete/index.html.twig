@@ -33,7 +33,9 @@
                         <a href="{{ path('admin_paquete_show', { id: paquete.id }) }}" class="btn btn-sm btn-default">
                             {{ 'action.show'|trans }}
                         </a>
-
+                    </div>
+                    <br />
+                    <div class="item-actions">
                         {% if paquete.activado %}
                         <a href="{{ path('admin_paquete_disable', { id: paquete.id }) }}" class="btn btn-sm btn-warning">
                             <i class="fa fa-edit"></i> {{ 'action.disable'|trans }}
@@ -44,7 +46,7 @@
                         </a>
                         {% endif %}
                     </div>
-                    <hr />
+                    <br />
                     <div class="item-actions">
                         <a href="{{ path('admin_paquete_fechas', { id: paquete.id }) }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-edit"></i> {{ 'action.fechas'|trans }}
