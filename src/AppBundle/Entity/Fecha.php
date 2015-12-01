@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FechaRepository")
  * @ORM\Table(name="Fecha")
  */
 class Fecha
@@ -42,6 +42,16 @@ class Fecha
      * @ORM\Column(type="integer")
      */
     private $afip;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Carrito", mappedBy="fecha", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    private $carritos;
+
+    public function __construct()
+    {
+        $this->carritos = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -97,4 +107,29 @@ class Fecha
     {
         $this->afip = $afip;
     }
+
+    public function getCarritos()
+    {
+        return $this->carritos;
+    }
+
+    public function addCarrito(Carrito $carrito)
+    {
+        if (!$this->carritos->contains($carrito)) {
+            $carrito->setFecha($this);
+            $this->carritos->add($carrito);
+        }
+
+        return $this;
+    }
+
+    public function removeCarrito(Carrito $carrito)
+    {
+        if ($this->carritos->contains($carrito)) {
+            $this->carritos->removeElement($carrito);
+        }
+
+        return $this;        
+    }
+
 }

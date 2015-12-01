@@ -1,0 +1,650 @@
+
+
+		 	
+				
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="es-AR" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="es-AR" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="es-AR" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="es-AR" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="es-AR"><!--<![endif]-->
+<head>
+    <!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+var _vwo_code=(function(){
+var account_id=46819,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+</script>
+<!-- End Visual Website Optimizer Asynchronous Code -->
+
+
+<!-- Kissmetrics code -->
+<script type="text/javascript">var _kmq = _kmq || [];
+var _kmk = _kmk || 'a6f33261c1a922cf209eb70f118645bcff1f3ea0';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+</script>
+<!-- END Kissmetrics code -->
+
+			<!-- Kissmetrics event -->
+			<script type="text/javascript">
+				_kmq.push(['record', 'started purchase', {'started purchase - product category':'Ofertas', 'started purchase - product name':'{{ paquete.titulo }}', 'started purchase - product price':{{ fecha.precio }}}]);
+			</script>
+			<!-- END Kissmetrics event -->
+	    <meta charset="utf-8"> 
+
+    <meta name="robots" content="noindex,nofollow"/>
+    <title>Formulario de pago</title>
+    <link href="{{ absoluteUrl }}/css/at-base-rules.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+     <link href="{{ absoluteUrl }}/css/jquery.qtip.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/js/jquery-cluetip/jquery.cluetip.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-reset.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-layout-rules.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-header.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-buttons.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-search-box.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-carousel.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-checkout.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-faq.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-system-messages.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-misc.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-overlays.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-packages.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-payment-methods.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-financiacion.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-flights.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-flights-filters.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-widgets.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-matriz-vuelos.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-hotels.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-hotels-autocomplete.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-landings.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-encuesta.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ absoluteUrl }}/css/at-desambiguador.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- <link href="{{ absoluteUrl }}/css/autos.css" rel="stylesheet" type="text/css" media="screen" /> -->
+    <link href="{{ absoluteUrl }}/css/screen-original.css" rel="stylesheet" type="text/css" media="screen" />
+
+        <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/i18n/jquery.ui.datepicker-es.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.position.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.autocomplete.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.tooltip.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/ui/jquery.ui.accordion.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/main.js?v=3"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/enhanced-ecommerce.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery-cluetip/jquery.cluetip.all.min.js"></script>
+	<script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.infinitecarousel3.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.qtip.min.js"></script>
+</head>
+
+<body id="checkout" class="at-checkout">
+	<!-- Google Tag Manager --> 
+<noscript><iframe src="{{ absoluteUrl }}//www.googletagmanager.com/ns.html?id=GTM-X5CB" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
+})(window,document,'script','dataLayer','GTM-X5CB');</script> 
+<!-- End Google Tag Manager -->
+<!-- Pixel Perfect Audience -->
+<script type="text/javascript">
+  (function() {
+    window._pa = window._pa || {};
+    // _pa.orderId = "myCustomer@email.com"; // OPTIONAL: attach user email or order ID to conversions
+    // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/51a4c892c0225a79ff00005a.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+</script>
+<!-- END Pixel Perfect Audience -->	<div id="container">
+	        		<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0013/1875.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- header -->
+<header id="header">
+  <div class="content" itemscope itemtype="http://schema.org/Organization">
+    <h1 class="logo">
+      <a itemprop="url" title="Avantrip" href="http://www.avantrip.com/"><img itemprop="logo" src="{{ absoluteUrl }}/img/ui/logo.png" alt="Avantrip | Su agencia de viajes en Internet" /></a>
+    </h1>
+    <div itemprop="potentialAction" class="slogan">
+      Hasta donde quieras llegar.
+    </div>
+    <div class="call-us">
+      <p itemprop="telephone" class="phone-number">0810-222-2826</p>
+      <a class="necesitas" href="/preguntas-frecuentes" title="Preguntas Frecuentes" target="_blank">¿Necesitás ayuda?</a>
+    </div>
+
+<ul class="socials l-inline">
+  <li><g:plusone href="http://www.avantrip.com" size="medium"></g:plusone></li>
+  <li>
+    <iframe src="{{ absoluteUrl }}//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Favantrip&amp;send=false&amp;layout=button_count&amp;width=140&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:140px; height:21px;" allowTransparency="true"></iframe>
+  </li>
+</ul>
+</div>
+<nav class="nav navegador">
+  <div class="content">
+    <ul id="nav">
+      <li class="menu-responsive">
+        <a href="#"><i class="fa fa-bars"></i> Menú </a>
+      </li>
+      <li ><a href="http://www.avantrip.com/" ><span class="icon-header vuelo"></span>Vuelos</a></li>
+      <li ><a href=http://www.avantrip.com/hoteles ><span class="icon-header hotel"></span>Hoteles</a></li>
+      <li ><a  href="http://www.avantrip.com/paquetes"><span class="icon-header paquete"></span>Paquetes</a></li>
+	    <li class="active"><a class="active" href="http://www.avantrip.com/autos/"><span class="icon-header auto"></span>Autos</a></li>
+      <li ><a  href="http://pasesdisney.avantrip.com/"><span class="icon-header disney"></span>Pases Disney</a></li>
+      <li ><a  href="http://avantrip.com/cruceros/"><span class="icon-header cruceros"></span>Cruceros</a></li>
+    </ul>
+  </div>
+  <div class="nav-indicator"></div>
+</nav>
+</header>
+<!-- /header -->
+
+<script>
+currencyTable = {"ARS":{"code":"ARS","name":"Pesos Arg","symbol":"AR$","conversion":"8.310","visible":"1"},"EUR":{"code":"EUR","name":"Euro","symbol":"&euro;","conversion":"0.706","visible":"1"},"USD":{"code":"USD","name":"Dolares","symbol":"U$D","conversion":"1.000","visible":"1"},"BRL":{"code":"BRL","name":"Reales","symbol":"R$","conversion":"1.890","visible":"1"},"CLP":{"code":"CLP","name":"Pesos Chi","symbol":"CL$","conversion":"542.020","visible":"0"},"GBP":{"code":"GBP","name":"Libras Ing","symbol":"&pound;","conversion":"0.629","visible":"0"},"MXN":{"code":"MXN","name":"Pesos Mex","symbol":"MX$","conversion":"13.492","visible":"0"},"UYU":{"code":"UYU","name":"Pesos Uru","symbol":"UR$","conversion":"13.492","visible":"0"},"CAD":{"code":"CAD","name":"Dolares Can","symbol":"CAD","conversion":"1.003","visible":"0"},"CNY":{"code":"CNY","name":"China","symbol":"CNY","conversion":"6.830","visible":"0"},"AFN":{"code":"AFN","name":" Afghanistan Afg","symbol":"AFN","conversion":"44.300","visible":"0"},"ALL":{"code":"ALL","name":" Albania Leke","symbol":"ALL","conversion":"107.820","visible":"0"},"DZD":{"code":"DZD","name":" Algeria Dinars","symbol":"DZD","conversion":"75.330","visible":"0"},"AUD":{"code":"AUD","name":" Australia Dolla","symbol":"AUD","conversion":"1.088","visible":"0"},"BSD":{"code":"BSD","name":" Bahamas Dollars","symbol":"BSD","conversion":"1.000","visible":"0"},"BHD":{"code":"BHD","name":" Bahrain Dinars","symbol":"BHD","conversion":"0.377","visible":"0"},"BDT":{"code":"BDT","name":" Bangladesh Taka","symbol":"BDT","conversion":"69.250","visible":"0"},"BBD":{"code":"BBD","name":" Barbados Dollar","symbol":"BBD","conversion":"2.000","visible":"0"},"BMD":{"code":"BMD","name":" Bermuda Dollars","symbol":"BMD","conversion":"1.000","visible":"0"},"BGN":{"code":"BGN","name":" Bulgaria Leva","symbol":"BGN","conversion":"1.536","visible":"0"},"XOF":{"code":"XOF","name":" CFA Francs BCEA","symbol":"XOF","conversion":"515.231","visible":"0"},"XAF":{"code":"XAF","name":" CFA Francs BEAC","symbol":"XAF","conversion":"515.231","visible":"0"},"XPF":{"code":"XPF","name":" CFP Francs","symbol":"XPF","conversion":"93.731","visible":"0"},"COP":{"code":"COP","name":" Colombia Pesos","symbol":"COP","conversion":"1.000","visible":"0"},"CRC":{"code":"CRC","name":" Costa Rica Colo","symbol":"CRC","conversion":"513.700","visible":"0"},"HRK":{"code":"HRK","name":" Croatia Kuna","symbol":"HRK","conversion":"5.726","visible":"0"},"CYP":{"code":"CYP","name":" Cyprus Pounds","symbol":"CYP","conversion":"0.460","visible":"0"},"CZK":{"code":"CZK","name":" Czech Republic ","symbol":"CZK","conversion":"19.392","visible":"0"},"DKK":{"code":"DKK","name":" Denmark Kroner","symbol":"DKK","conversion":"5.848","visible":"0"},"DOP":{"code":"DOP","name":" Dominican Repub","symbol":"DOP","conversion":"36.550","visible":"0"},"XCD":{"code":"XCD","name":" East Caribbean ","symbol":"XCD","conversion":"2.685","visible":"0"},"EGP":{"code":"EGP","name":" Egypt Pounds","symbol":"EGP","conversion":"5.707","visible":"0"},"EEK":{"code":"EEK","name":" Estonia Krooni","symbol":"EEK","conversion":"12.290","visible":"0"},"FJD":{"code":"FJD","name":" Fiji Dollars","symbol":"FJD","conversion":"1.935","visible":"0"},"XAU":{"code":"XAU","name":" Gold Ounces","symbol":"XAU","conversion":"0.001","visible":"0"},"HKD":{"code":"HKD","name":" Hong Kong Dolla","symbol":"HKD","conversion":"7.769","visible":"0"},"HUF":{"code":"HUF","name":" Hungary Forint","symbol":"HUF","conversion":"225.374","visible":"0"},"ISK":{"code":"ISK","name":" Iceland Kronur","symbol":"ISK","conversion":"117.960","visible":"0"},"XDR":{"code":"XDR","name":" IMF Special Dra","symbol":"XDR","conversion":"0.661","visible":"0"},"INR":{"code":"INR","name":" India Rupees","symbol":"INR","conversion":"46.493","visible":"0"},"IDR":{"code":"IDR","name":" Indonesia Rupia","symbol":"IDR","conversion":"9.000","visible":"0"},"IRR":{"code":"IRR","name":" Iran Rials","symbol":"IRR","conversion":"10.000","visible":"0"},"IQD":{"code":"IQD","name":" Iraq Dinars","symbol":"IQD","conversion":"1.000","visible":"0"},"ILS":{"code":"ILS","name":" Israel New Shek","symbol":"ILS","conversion":"3.775","visible":"0"},"JMD":{"code":"JMD","name":" Jamaica Dollars","symbol":"JMD","conversion":"85.150","visible":"0"},"JPY":{"code":"JPY","name":" Japan Yen","symbol":"JPY","conversion":"83.950","visible":"0"},"JOD":{"code":"JOD","name":" Jordan Dinars","symbol":"JOD","conversion":"0.709","visible":"0"},"KZT":{"code":"KZT","name":" Kazakhstan Teng","symbol":"KZT","conversion":"147.425","visible":"0"},"KES":{"code":"KES","name":" Kenya Shillings","symbol":"KES","conversion":"81.200","visible":"0"},"KWD":{"code":"KWD","name":" Kuwait Dinars","symbol":"KWD","conversion":"0.288","visible":"0"},"LBP":{"code":"LBP","name":" Lebanon Pounds","symbol":"LBP","conversion":"1.000","visible":"0"},"MYR":{"code":"MYR","name":" Malaysia Ringgi","symbol":"MYR","conversion":"3.111","visible":"0"},"MTL":{"code":"MTL","name":" Malta Liri","symbol":"MTL","conversion":"0.337","visible":"0"},"MUR":{"code":"MUR","name":" Mauritius Rupee","symbol":"MUR","conversion":"30.700","visible":"0"},"MAD":{"code":"MAD","name":" Morocco Dirhams","symbol":"MAD","conversion":"8.695","visible":"0"},"NZD":{"code":"NZD","name":" New Zealand Dol","symbol":"NZD","conversion":"1.382","visible":"0"},"NGN":{"code":"NGN","name":" Nigeria Nairas","symbol":"NGN","conversion":"151.750","visible":"0"},"NOK":{"code":"NOK","name":" Norway Kroner","symbol":"NOK","conversion":"6.188","visible":"0"},"OMR":{"code":"OMR","name":" Oman Rials","symbol":"OMR","conversion":"0.385","visible":"0"},"PKR":{"code":"PKR","name":" Pakistan Rupees","symbol":"PKR","conversion":"85.710","visible":"0"},"XPD":{"code":"XPD","name":" Palladium Ounce","symbol":"XPD","conversion":"0.002","visible":"0"},"PEN":{"code":"PEN","name":" Peru Nuevos Sol","symbol":"PEN","conversion":"2.798","visible":"0"},"PHP":{"code":"PHP","name":" Philippines Pes","symbol":"PHP","conversion":"44.300","visible":"0"},"XPT":{"code":"XPT","name":" Platinum Ounces","symbol":"XPT","conversion":"0.001","visible":"0"},"PLN":{"code":"PLN","name":" Poland Zlotych","symbol":"PLN","conversion":"3.094","visible":"0"},"QAR":{"code":"QAR","name":" Qatar Riyals","symbol":"QAR","conversion":"3.641","visible":"0"},"RON":{"code":"RON","name":" Romania New Lei","symbol":"RON","conversion":"3.366","visible":"0"},"RUB":{"code":"RUB","name":" Russia Rubles","symbol":"RUB","conversion":"30.842","visible":"0"},"SAR":{"code":"SAR","name":" Saudi Arabia Ri","symbol":"SAR","conversion":"3.750","visible":"0"},"XAG":{"code":"XAG","name":" Silver Ounces","symbol":"XAG","conversion":"0.050","visible":"0"},"SGD":{"code":"SGD","name":" Singapore Dolla","symbol":"SGD","conversion":"1.343","visible":"0"},"ZAR":{"code":"ZAR","name":" South Africa Ra","symbol":"ZAR","conversion":"7.220","visible":"0"},"KRW":{"code":"KRW","name":" South Korea Won","symbol":"KRW","conversion":"1.000","visible":"0"},"LKR":{"code":"LKR","name":" Sri Lanka Rupee","symbol":"LKR","conversion":"112.555","visible":"0"},"SDG":{"code":"SDG","name":" Sudan Pounds","symbol":"SDG","conversion":"2.365","visible":"0"},"SEK":{"code":"SEK","name":" Sweden Kronor","symbol":"SEK","conversion":"7.272","visible":"0"},"CHF":{"code":"CHF","name":" Switzerland Fra","symbol":"CHF","conversion":"1.011","visible":"0"},"TWD":{"code":"TWD","name":" Taiwan New Doll","symbol":"TWD","conversion":"32.000","visible":"0"},"THB":{"code":"THB","name":" Thailand Baht","symbol":"THB","conversion":"31.015","visible":"0"},"TTD":{"code":"TTD","name":" Trinidad and To","symbol":"TTD","conversion":"6.350","visible":"0"},"TND":{"code":"TND","name":" Tunisia Dinars","symbol":"TND","conversion":"1.489","visible":"0"},"TRY":{"code":"TRY","name":" Turkey Lira","symbol":"TRY","conversion":"1.515","visible":"0"},"AED":{"code":"AED","name":" United Arab Emi","symbol":"AED","conversion":"3.673","visible":"0"},"VEF":{"code":"VEF","name":" Venezuela Boliv","symbol":"VEF","conversion":"4.300","visible":"0"},"VND":{"code":"VND","name":" Vietnam Dong","symbol":"VND","conversion":"19.000","visible":"0"},"ZMK":{"code":"ZMK","name":" Zambia Kwacha","symbol":"ZMK","conversion":"4.000","visible":"0"}};</script>
+
+<script type="text/javascript" src="{{ absoluteUrl }}/js/header.js"></script>
+		<link href="{{ absoluteUrl }}/css/jquery.qtip.css" rel="stylesheet" type="text/css" media="screen"/>
+		<script type="text/javascript" src="{{ absoluteUrl }}/js/checkout.js"></script>
+		<script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.qtip.min.js"></script>
+		<script type="text/javascript" src="{{ absoluteUrl }}/js/jquery.maskedinput-1.2.2.js"></script>
+		<div id="content">
+			<div id="parent" class="module inside">
+        {{ form_start(form) }}
+						<div class="dle-trackStepCheckout" data-track='{
+							"id": "{{ paquete.id }}",
+							"name": "{{ paquete.titulo }}",
+							"price": "{{ fecha.precio }}",
+							"brand": "{{ paquete.titulo }}",
+							"category": "paquetes",
+							"quantity": "{{ pasajeros }}"
+						}'></div>
+            						<div class="msg escala" id="usa"><p>Por favor ten&eacute; en cuenta que para hacer <strong>escala en Estados Unidos</strong>, todos los pasajeros con pasaporte
+							argentino deber&aacute;n contar con su <strong>visa estadounidense</strong></p>
+						</div>
+						<div class="msg escala" id="canada"><p>Por favor ten&eacute; en cuenta que para hacer <strong>escala en Canad&aacute;</strong>, todos los pasajeros con pasaporte
+							argentino deber&aacute;n contar con su <strong>visa canadiense</strong></p>
+						</div>
+												<div class="msg escala" id="retorno" style=""><p>Por favor, ten&eacute; en cuenta que si no sos residente del pa&iacute;s al que viaj&aacute;s y no ten&eacute;s una Visa especial, deb&eacute;s contar con un ticket de salida
+						 de ese pa&iacute;s dentro de los 90 d&iacute;as, para presentar al momento de realizar tu viaje.</p>
+						</div>
+						<h3 class="step-1 heading">
+							<span>1.</span> Por favor, indicanos los datos de los pasajeros
+						</h3>
+						
+            {% for i in 1..pasajeros %}
+            <fieldset class="adult passengers-info">
+              <legend class="heading">Pasajero {{ i }} (Adulto)</legend>
+              <ul>
+                <li class="name">
+                  <label>Nombre</label>
+                  {{ form_errors(form["pax_" ~ i]["name"]) }}
+                  {{ form_widget(form["pax_" ~ i]["name"]) }}
+                  {% if ( errores_checkout['pax_' ~ i ~ '_name'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['pax_' ~ i ~ '_name']}}
+                      </span>
+                    </div>
+                  {% endif %}
+
+                </li>
+                <li class="lastname">
+                  <label>Apellido</label>
+                  {{ form_errors(form["pax_" ~ i]["lastname"]) }}
+                  {{ form_widget(form["pax_" ~ i]["lastname"]) }}
+                  {% if ( errores_checkout['pax_' ~ i ~ '_lastname'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['pax_' ~ i ~ '_lastname']}}
+                      </span>
+                    </div>
+                  {% endif %}
+                </li>
+                <li class="dni">
+                  <label>Documento de Viaje</label>
+                  {{ form_errors(form["pax_" ~ i]["tipodoc"]) }}
+                  {{ form_widget(form["pax_" ~ i]["tipodoc"]) }}
+                  {{ form_errors(form["pax_" ~ i]["dni"]) }}
+                  {{ form_widget(form["pax_" ~ i]["dni"]) }}
+                  {% if ( errores_checkout['pax_' ~ i ~ '_dni'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['pax_' ~ i ~ '_dni']}}
+                      </span>
+                    </div>
+                  {% endif %}
+                </li>
+                <li class="birth usa-canada">
+                  <label>Fecha de nacimiento</label>
+                  <ul>
+                    <li class="day">
+                      {{ form_errors(form["pax_" ~ i]["diafechanac"]) }}
+                      {{ form_widget(form["pax_" ~ i]["diafechanac"]) }}
+                    </li>
+                    <li class="month">
+                      {{ form_errors(form["pax_" ~ i]["mesfechanac"]) }}
+                      {{ form_widget(form["pax_" ~ i]["mesfechanac"]) }}
+                    </li>
+                    <li class="year">
+                      {{ form_errors(form["pax_" ~ i]["aniofechanac"]) }}
+                      {{ form_widget(form["pax_" ~ i]["aniofechanac"]) }}
+                    </li>
+                  </ul>
+                  {% if ( errores_checkout['pax_' ~ i ~ '_fechanac'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['pax_' ~ i ~ '_fechanac']}}
+                      </span>
+                    </div>
+                  {% endif %}
+                </li>
+                
+                
+              </ul>
+            </fieldset>
+            {% endfor %}
+																																																<h3 class="step-2 heading">
+							<span>2.</span> Ingresá tus datos para que podamos enviarte el voucher
+						</h3>
+						
+						<fieldset class="contact-info">
+							<ul>
+								<li class="email">
+									<label>Tu email</label>
+                  {{ form_errors(form.email) }}
+                  {{ form_widget(form.email) }}
+                  {% if ( errores_checkout['email'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['email']}}
+                      </span>
+                    </div>
+                  {% endif %}
+								</li>
+								<li class="cellphone">
+									<label>Tu teléfono o celular</label>
+									<ul>
+										<li class="code-area">
+                      {{ form_errors(form.areacode) }}
+                      {{ form_widget(form.areacode) }}
+										</li>
+										<li class="phone">
+                      {{ form_errors(form.phone) }}
+                      {{ form_widget(form.phone) }}
+										</li>
+									</ul>
+                  {% if ( errores_checkout['telefono'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['telefono']}}
+                      </span>
+                    </div>
+                  {% endif %}
+								</li>
+  						</ul>
+							<fieldset class="terms-and-conditions">
+								<label>
+                  {{ form_errors(form.termsandcond) }}
+                  {{ form_widget(form.termsandcond) }}
+									<span>Declaro conocer los <a class="terms-and-conditions ajax cboxElement" href="/overlays/terminos-y-condiciones.php">términos y condiciones</a> de Avantrip</span>
+                  {% if ( errores_checkout['termsandcond'] is defined ) %}
+                    <div class="error ltr active">
+                      <span class="left"></span><span class="right">{{errores_checkout['termsandcond']}}
+                      </span>
+                    </div>
+                  {% endif %}
+								</label>
+															</fieldset>
+							<br>
+													</fieldset>
+																								
+						<h3 class="step-3 heading">
+							<span>3.</span> Elegí cómo pagar
+						</h3>
+					
+												<!-- Medio de pago elegido -->
+						<input name="formapago_all" type="text" value="" style="display:none;" />
+						<!-- COMIENZO CODIGO NUEVO -->
+
+						<!-- MÉTODOS DE PAGO -->
+						<div class="payment-methods">
+
+							<div class="system-message error" style="display:none;">
+								<p>Por favor, seleccioná una modalidad de pago.</p>
+							</div>
+							<div class="item tarjeta ">
+
+								<div class="row">
+									<input type="radio" name="metodo" id="tarjeta" class="radio radioPago" checked="checked" value="1" /><label for="tarjeta"><strong>Tarjeta de crédito</strong> (online) ¡Recomendado!</label>
+								</div>
+								
+								<div class="description clearfix">
+																																																					</div>
+
+							</div>
+							
+							<div class="item deposito ">
+								
+								<div class="row">
+									<input type="radio" name="metodo" id="deposito" class="radio radioPago"  value="4" /><label for="deposito"><strong>Depósito o transferencia bancaria</strong></label>
+								</div>
+
+								<div class="description" style="display:none;" >
+																			<h3 class="subtitle">Trabajamos con:</h3>
+										<ul class="banks">
+										<li><span class="banco galicia">Banco Galicia</span></li>
+										<li><span class="banco santander">Banco Santander Rio</span></li>
+										<li><span class="banco standard">Banco Standard Bank</span></li>
+										</ul>
+
+										<p class="note">Tenés hasta <strong>18 hs para informarnos tu pago</strong> una vez que realices tu solicitud de compra.</p>
+																	</div>
+
+							</div>
+							
+							<div class="item pagomiscuentas ">
+								
+								<div class="row">
+									<input type="radio" name="metodo" id="pagomiscuentas" class="radio radioPago"  value="3" /><label for="pagomiscuentas"><strong>Pagomiscuentas.com</strong></label>
+								</div>
+								
+								<div class="description clearfix" style="display:none;" >
+																			<h4 class="logo-pagomiscuentas">PagoMisCuentas Banelco</h4>
+										<p class="note">Podés hacer tu pago por internet en <a href="http://www.pagomiscuentas.com" title="pagomiscuentas.com" target="_blank">pagomiscuentas.com</a> o en cualquier cajero de la red Banelco.</p>
+																	</div>
+
+							</div>
+
+							<div class="item telefono is-disabled">
+
+								<div class="row">
+									<input type="radio" name="metodo" id="telefono" class="radio radioPago" disabled="disabled" value="5" /><label for="telefono"><strong>Telefónicamente</strong></label>
+								</div>
+
+								<div class="description"  >
+									<p>Disponible de lunes a viernes de 8 a 20 hs. Sábados y Domingo de 9 a 15 hs.</p>								</div>
+
+							</div>
+
+						</div>
+
+						<div class="alert-message active titular-pago">
+							<span class="icon"></span>
+							Tené en cuenta que, por una disposición de la AFIP, la factura debe realizarse a nombre de la persona que realiza el pago. 
+						</div>
+
+						<!-- FIN CODIGO NUEVO -->
+						<input type="hidden" name="dl_precio_ars" value="{{ pasajeros*fecha.precio }}" />
+						<button type="button" class="btn btn-primary btn-next callout buttonSubmit">Seleccionar</button>
+
+						<div class="security">
+							<ul class="autentifications">
+								<li>Avantrip.com es un sitio seguro. El almacenamiento y procesamiento de los datos se encuentran autentificados por Verisign y CertiSur (Certificado SSL).</li>
+							</ul>
+						</div>
+				{{ form_end(form) }}
+			</div>
+				
+<script type="text/javascript" src="{{ absoluteUrl }}/js/resume_producto_cart.js"></script>
+<div id="resume">
+	<div class="module inside">
+					<h2 class="heading primary">Mi resumen</h2>
+
+		<h3 class="subheading">Precio en <strong>pesos argentinos</strong></h3>
+		
+		
+							<div class="price hotel">
+						<dl>
+							<dt class="resumen">{{ pasajeros }} Pasajeros</dt>
+							<dd class="resumen-precio">
+								<em>AR$ </em>{{ pasajeros*fecha.precio }}							</dd>
+													</dl>
+						<div class="price-flight total">
+							<span class="currency foreign">US$</span>
+							<span class="amount foreign">{{ (pasajeros*fecha.precio/currencyPesos.conversion)|round(0,'ceil') }} / </span>
+							<span class="currency ">AR$</span>
+							<span class="amount ">{{ pasajeros*fecha.precio }}</span>
+							<span class="price-total">Precio total</span>
+						</div>
+					</div>
+					<p class="currency-exchange">
+						<!--Tipo de cambio -->1 U$S = ${{ currencyPesos.conversion|number_format(2, ',', '.') }}</p>
+					
+					<div class="beneficio-promocionado">
+						<h3 class="subheading">Detalle de tu compra</h3>
+						<p><strong>{{ paquete.titulo }}</strong></p>
+						<h4 class="heading">Desde:</h4>
+						<p>{{ paquete.validoDesde|localizeddate('short', 'short')|date('d \\d\\e F \\d\\e\\l Y') }}</p>
+						<p>{{ pasajeros }} pasajeros</p>
+						<p>{{ paquete.descripcionCortaTitulo }}</p>
+					</div>
+					
+							<p class="conditions">
+					<a class="conditions ajax cboxElement" href="/overlays/condiciones-de-cambios.html">Cambios y devoluciones</a>
+			</p>
+		<!-- 
+		<div id="price-details">
+		<h4 class="heading">Qué incluye el precio?</h4>
+
+		<ul>
+		  <li>Los impuestos y los cargos.</li>
+		  <li>Las tasas del aeropuerto de origen.</li>
+		</ul>
+
+		</div>
+		-->
+	</div>
+</div>
+			</div>
+			<!-- footer -->
+<footer id="footer" itemscope itemtype="http://schema.org/TravelAgency">
+    <div class="content">
+
+        <div class="box memberships">  
+            <div class="box-wrapper">
+            <h3 class="heading"><span class="icon-footer respaldo"></span> Respaldo</h3>
+            <ul class="logos">
+                <li class="aaavyt"><a href="http://faevyt.org.ar/" target="_blank" title="Federación Argentina de Asociaciones de Empresas de Viajes y Turismo" itemprop="memberOf">Federación Argentina de Asociaciones de Empresas de Viajes y Turismo</a></li>
+                <li class="aviabue"><a itemprop="memberOf" href="http://www.aviabue.org.ar/" target="_blank" title="Asociación de Agencias de Viajes y Turismo de Buenos Aires">Asociación de Agencias de Viajes y Turismo de Buenos Aires</a></li>
+                <li class="tripadvisor" itemprop="memberOf">Ahora con reseñas de hoteles por</li>
+            </ul>
+            <div class="blog-xl">
+                <p><a class="icon" itemprop="subOrganization" href="http://blog.avantrip.com/" target="_blank">blog.avantrip.com</a>blog de avantrip</p>
+            </div>
+            </div>
+        </div>
+        <!-- /box -->
+        
+        <div class="box payments">  
+            <div class="box-wrapper">
+            <h3 class="heading"><i class="avFont avFont-billetera"></i> Facilidades de pago</h3>
+            <ul class="logos">
+                <li class="visa">Visa</li>
+                <li class="mastercard">MasterCard</li>
+                <li class="amex">American Express</li>
+                <li class="cabal">Cabal</li>
+                <li class="diners">Diners Club International</li>
+            </ul>
+
+            <ul class="links">
+                <li><a itemprop="paymentAccepted" href="http://www.avantrip.com/formas-de-pago" title="Tarjetas de crédito">Ver todos los medios de pago</a></li>
+            </ul>
+            </div>
+        </div>
+        <!-- /box -->
+
+
+        <div class="box secure">
+            <div class="box-wrapper">
+            <h3 class="heading"><span class="icon-footer seguro"></span>Sitio seguro</h3>
+            <ul class="logos seguros">
+            <li class="verisign"><a href="https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=www.avantrip.com&lang=es" target="_blank">Verisign</a></li>
+            </ul>
+            <a itemprop="taxID" href="https://servicios1.afip.gov.ar/clavefiscal/qr/mobilePublicInfo.aspx?req=e1ttZXRob2Q9Z2V0UHVibGljSW5mb11bcGVyc29uYT0zMzcxMDc0NTE1OV1bdGlwb2RvbWljaWxpbz0wXVtzZWN1ZW5jaWE9MF1bdXJsPWh0dHA6Ly93d3cuYXZhbnRyaXAuY29tXX0=" target="_F960AFIPInfo" class="data-fiscal">Data Fiscal</a>
+
+            <ul class="links" itemscope itemtype="http://schema.org/WebPage">
+                <li><a itemprop="relatedLink" href="http://www.avantrip.com/politica-de-privacidad" title="Política de privacidad">Política de privacidad</a></li>
+                <li><a itemprop="relatedLink" href="http://www.avantrip.com/seguridad" title="Seguridad">Seguridad</a></li>
+                <li><a itemprop="relatedLink" href="http://www.avantrip.com/terminos-y-condiciones" title="Términos y condiciones">Términos y condiciones</a></li>
+            </ul>
+            </div>
+        </div> 
+        <!-- /box -->
+
+        
+        <div class="box contact-us last">  
+            <div class="box-wrapper">
+            <h3 class="heading"><span class="icon-footer contacto"></span>Contacto</h3>
+
+            <div class="call-us">
+                <p itemprop="telephone" class="phone-number">
+                    0810-222-2826                </p>
+                <time class="horario" itemprop="openingHours" datetime="Mo-Fri 8:00-20:00,Sa-Su 9:00-15:00">
+                    Lun a Vie de 8 a 20hs.<br>
+                    Sáb y Dom de 9 a 15hs.
+                </time>
+            </div>
+            <ul class="links" itemscope itemtype="http://schema.org/WebPage">
+                <li><a itemprop="relatedLink" href="http://www.avantrip.com/oportunidades/programa-de-afiliados" title="Programa de Afiliados">Programa de Afiliados</a></li>
+                <li><a itemprop="relatedLink" href="http://www.avantrip.com/quienes-somos" title="Acerca de Avantrip">Acerca de Avantrip</a></li>
+    			<li><a itemprop="relatedLink" href="http://www.avantrip.com/preguntas-frecuentes" title="Preguntas Frecuentes">Preguntas Frecuentes</a></li>
+    			
+                <!--<li><a id="trabaja-avantrip" href="#" title="Trabajá con nosotros">Trabajá con nosotros</a></li>-->
+            </ul>
+            </div>
+        </div>
+        <!-- /box -->
+
+        <div class="bottom clearfix">
+            <div class="copyright">
+                2008 - 2015 Avantrip.com - Todos los derechos reservados<br />
+                <span itemprop="legalName">Avantrip.com SRL Legajo Nro. 13969 - Disp. 299</span>
+            </div>
+
+            <ul class="socials">
+                <li class="blog"><a target="_blank" href="http://blog.avantrip.com/" title="Seguí nuestro blog">blog</a></li>
+                <li class="facebook"><a target="_blank" href="http://www.facebook.com/avantrip" title="Seguínos en Facebook">Facebook</a></li>
+                <li class="twitter"><a target="_blank" href="http://twitter.com/avantrip" title="Seguínos en Twitter">Twitter</a></li>
+            </ul>
+        </div>
+        <!-- / bottom-->
+
+    </div>
+</footer>
+
+
+<script>
+	$(document).ready(function(){
+		$(".ajax").colorbox();
+	});
+</script>
+
+<!-- chat -->
+<!-- begin olark code --><script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length; while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])} c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d); (function(){function l(j){j="head";return["<",j,"></",j,"><",z,' onl'+'oad="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"} D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('4074-408-10-6083');/*]]>{/literal}*/</script>
+<!-- end olark code -->
+
+<!-- /footer -->
+		</div>
+		<script type="text/javascript">
+
+			jQuery(document).ready(function($){
+
+				$(".verMas").click( function() {
+					if($(".trFinanciacion").css("display") == "none")
+					{
+						$(".trFinanciacion").fadeIn("slow");
+						$(this).removeClass("icon-more");
+						$(this).addClass("icon-less");
+						$(this).html("Ver menos opciones de financiación");
+						$(this).attr("title","Ver menos opciones de financiación");
+					}
+					else
+					{
+						$(".trFinanciacion").fadeOut("slow");	
+						$(this).removeClass("icon-less");
+						$(this).addClass("icon-more");
+						$(this).html("Ver todas las opciones de financiación");
+						$(this).attr("title","Ver todas las opciones de financiación");
+					}
+				})
+
+				$(".buttonSubmit").click( function() {
+
+					if($('.radioPago:checked').val() > 0)
+					{
+						$('form input[name=formapago_all]').val($('.radioPago:checked').val());
+						datalayersEcommercePackagesClass.trackCheckoutOption();
+						// Guardo el monto de la transacción
+						datalayersEcommercePackagesClass.trackCheckoutTraxAmount();
+						$('form').submit();
+					}
+					else
+					{
+						$(".system-message.error").fadeIn("slow");
+					}
+					
+
+				});
+
+				$('.radioPago').change( function(){
+					var i = 0;
+
+					$(".radioPago").parent().parent(":not(.is-disabled)").find(".description").slideUp("slow", function() {
+						i++;
+						if(i==$(".radioPago").parent().parent(":not(.is-disabled)").length)
+						{
+							$(".radioPago:checked").parent().parent().find(".description").slideDown("slow");	
+						}
+					});
+				});
+				
+				if ($("[escala='true'][destino_final_usa=false][escala_usa='true']").size() > 0){
+					$("#usa.msg.escala").show();
+				}
+				if ($("[escala='true'][destino_final_canada=false][escala_canada='true']").size() > 0){
+					$("#canada.msg.escala").show();
+				}
+				$('.credit-card-code-help').cluetip
+					(
+							{
+								activation: 'click',
+								local: false,
+								cursor: 'pointer',
+								width: 550,
+								arrows: true,
+								positionBy: 'bottomTop',
+								topOffset: 30,
+								showTitle: false,
+								closePosition: 'top',
+								sticky: true,
+								closeText: 'Cerrar'
+							}
+					);
+					
+								});
+			
+		</script>
+	</body>
+</html>

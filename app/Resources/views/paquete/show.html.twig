@@ -59,18 +59,18 @@
 					<div class="item deal-dates">
 						<p>
 							<span class="icon icon-calendar"></span> 
-							<p id="salida_texto">Desde el {{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('d \\d\\e F \\d\\e\\l Y') }}</p>
+							<p id="salida_texto">Desde el {{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('d \\d\\e F \\d\\e\\l Y') }} </p>
 						</p>
 					</div>
 					
 					
 
-					<form id="formComprar" action="/beneficiospromocionado_addtocart" method="post">
+					<form id="formComprar" action="{{ path('paquete_addtocart', { id: paquete.id }) }}" method="post">
 						<input type="hidden" class="id" name="id" value="{{ paquete.id }}"/>
 						<input type="hidden" class="fecha" name="fecha" value="{{ paquete.mejorFecha.fecha|localizeddate('short', 'short')|date('Y-m-d') }}"/>
 						<input type="hidden" class="pasajeros" name="pasajeros" value="{{ paquete.pasajeroDefault }}"/>
-													<input type="submit" onclick="datalayersEcommercePackagesClass.trackProductClick();" class="continue-btn callout btn btn-next btn-primary dle-trackProductClick" value="Continuar" />
-							</form>
+						<input type="submit" onclick="datalayersEcommercePackagesClass.trackProductClick();" class="continue-btn callout btn btn-next btn-primary dle-trackProductClick" value="Continuar" />
+					</form>
 											
 				</div>
 			</div>

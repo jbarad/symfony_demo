@@ -13,6 +13,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Paquete;
 use AppBundle\Entity\Currency;
+use AppBundle\Entity\Carrito;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -68,5 +69,35 @@ class PaqueteController extends Controller
             'currencyDolares' => $currencyDolares[0],
             'paquetesCercanos' => $paquetesCercanos,
         ));
+    }
+
+    /**
+     * @Route("/paquete_addtocart/{id}", name="paquete_addtocart")
+     */
+    public function paqueteAddtocartAction(Paquete $paquete, Request $request)
+    {
+        if ($request->getMethod() == 'POST') {
+            $idPaquete = $paquete->getId();
+            $fecha = $this->get('request')->request->get('fecha');
+            $pasajeros = $this->get('request')->request->get('pasajeros');
+
+            $em = $this->getDoctrine()->getManager();
+            $repoFecha = $em->getRepository('AppBundle:Fecha');
+
+            $fechaObject = $repoFecha->findOneBy( array( 'paquete' => $paquete, 'fecha' => new \DateTime($fecha) ) );
+
+            $carrito = new Carrito();
+            $carrito->setFecha($fechaObject);
+            $carrito->setCurrency("ARS");
+            $carrito->setPasajeros($pasajeros);
+
+            $em->persist($carrito);
+            $em->flush();
+
+            $this->get('session')->set('fechaId', $fechaObject->getId());
+            $this->get('session')->set('pasajeros', $pasajeros);
+
+            return $this->redirect($this->generateUrl('carrito_detalle', array('id'=>2)));
+        }
     }
 }
