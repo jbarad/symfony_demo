@@ -311,10 +311,12 @@ class PaqueteController extends Controller
 
         $fechasActuales = $repoFecha->findByPaquete($paquete);
         
-        foreach($fechasActuales as $fechaActual) {
-            $stocksActuales[$fechaActual->getFecha()->format('d-m-Y')]=$fechaActual->getStock();
-            $em->remove($fechaActual);
-            $em->flush();
+        if ( !empty($fechasActuales) ) {
+            foreach($fechasActuales as $fechaActual) {
+                $stocksActuales[$fechaActual->getFecha()->format('d-m-Y')]=$fechaActual->getStock();
+                $em->remove($fechaActual);
+                $em->flush();
+            }
         }
 
         $dias = $this->get('request')->request->get('dia');
@@ -322,26 +324,28 @@ class PaqueteController extends Controller
         $precio = $this->get('request')->request->get('precio');
         $afip = $this->get('request')->request->get('afip');
 
-        foreach ($dias as $dia) {
-            $stockActual = isset($stocksActuales[$dia])&&$stocksActuales[$dia]?$stocksActuales[$dia]:0;
-            $stock = (int)$stockActual + (int)$cupo[$dia];
-            if ($stock <= 0) {
-                $stock = 0;
+        if ( !empty($dias) ) {
+            foreach ($dias as $dia) {
+                $stockActual = isset($stocksActuales[$dia])&&$stocksActuales[$dia]?$stocksActuales[$dia]:0;
+                $stock = (int)$stockActual + (int)$cupo[$dia];
+                if ($stock <= 0) {
+                    $stock = 0;
+                }
+
+                $fechaParsed = date_create($dia);
+
+                $fecha = new Fecha();
+                $fecha->setPaquete($paquete);
+                $fecha->setFecha($fechaParsed);
+                $fecha->setStock($stock);
+                $fecha->setPrecio((int)$precio[$dia]);
+                $fecha->setAfip((int)$afip[$dia]);
+
+                $em->persist($fecha);
             }
-
-            $fechaParsed = date_create($dia);
-
-            $fecha = new Fecha();
-            $fecha->setPaquete($paquete);
-            $fecha->setFecha($fechaParsed);
-            $fecha->setStock($stock);
-            $fecha->setPrecio((int)$precio[$dia]);
-            $fecha->setAfip((int)$afip[$dia]);
-
-            $em->persist($fecha);
+            $em->flush();
         }
-        $em->flush();
-
+        
         $this->addFlash('success', 'paquete.fechas.updated_successfully');
 
         return $this->redirectToRoute('admin_paquete_index');
