@@ -13,3 +13,4 @@ parameters:
     mailer_password: null
     locale: es
     secret: secret_value_for_symfony_demo_application
+    url_ssl: http://securesite.avantrip.com/
